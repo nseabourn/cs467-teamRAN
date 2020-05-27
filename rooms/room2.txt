@@ -20,7 +20,7 @@ What does the 'A' stand for in PEMDAS?
 Addition
 
 3
-Math Chest
+Math chest
 Math chest description
 1
 Math quiz
