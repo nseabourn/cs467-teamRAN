@@ -1,0 +1,25 @@
+Room Number
+Room to the top
+Room to the right
+Room to the bottom
+Room to the left
+Long description
+Short description
+Either north or null
+Description describing room to north or null
+Either east or null
+Description describing room to east or null
+Either south or null
+Description describing room to south or null
+Either west or null
+Description describing room to west or null
+Number of interactables
+Type of first interactable
+	0 = Interactable (base)
+	1 = Suspect
+	2 = Quiz
+	3 = Chest
+	4 = block
+	5 = unblock
+	6 = creator
+Parameters of interactable constructor

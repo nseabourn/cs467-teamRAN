@@ -1,0 +1,27 @@
+8
+-1
+9
+5
+-1
+To the east, is the entrance to Room 9.\nTo the south, is the enterance to Room 5.
+This room looks like to be a library, filled with books.
+null
+null
+east
+room 9
+south
+room 5
+null
+null
+2
+4
+Yellow book
+There is a note in this book, but words are written extremely small.
+Written inside is "This book is written is a foreign language!"
+4
+Red book
+There is a note in this book, but words are written extremely small.
+Written inside is a recipe for making a decilious meal for a dog!!!
+
+
+

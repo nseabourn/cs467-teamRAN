@@ -1,0 +1,16 @@
+11
+-1
+12
+10
+-1
+This is Room 11's long description.
+This is Room 11's short description.
+null
+null
+east
+room 12
+south
+room 10
+null
+null
+0

@@ -1,0 +1,22 @@
+5
+8
+6
+2
+-1
+This is Room 5's long description.
+This is Room 5's short description.
+north
+room 8
+east
+room 6
+south
+room 2
+null
+null
+0
+0
+notepad
+Written on the notepad is "24-11"
+4
+darkness
+The room is nothing but darkenss, you can only go back the way you came.

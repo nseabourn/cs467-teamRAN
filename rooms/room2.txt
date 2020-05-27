@@ -1,0 +1,26 @@
+2
+5
+3
+1
+-1
+To the north is the entrance to Room 5.\nTo the east is the entrance to Room 3.\nTo the south is the entrance to Room 1.
+This is Room 2's short description.
+north
+room 5
+east
+room 3
+south
+room 1
+null
+null
+2
+2
+Math quiz
+What does the 'A' stand for in PEMDAS?
+Addition
+
+3
+Math Chest
+Math chest description
+1
+Math quiz

@@ -1,0 +1,22 @@
+9
+-1
+10
+6
+8
+This is Room 9's long description.
+This is Room 9's short description.
+null
+null
+east
+room 10
+south
+room 6
+west
+room 8
+0
+5
+Magnifying Glass
+Magnifying glass can help reading small notes!
+4
+There is a note on the table, but words are written extremely small.
+Seems like a combination to a locked safe, note reads "5412".

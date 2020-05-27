@@ -1,0 +1,20 @@
+10
+11
+-1
+7
+9
+This is Room 10's long description.
+This is Room 10's short description.
+north
+room 11
+null
+null
+south
+room 7
+west
+room 9
+0
+4
+Hungry Dog
+There is a hungry dog blocking path to room 11, it seems like he is looking at a picture of steak on the wall!!
+

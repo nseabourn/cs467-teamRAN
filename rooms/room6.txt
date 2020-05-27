@@ -1,0 +1,26 @@
+6
+9
+7
+3
+5
+This is Room 6's long description.
+This is Room 6's short description.
+north
+room 9
+east
+room 7
+south
+room 3
+west
+room 5
+0
+5
+fire extinguisher
+It's a fire extinguisher.
+3
+fridge
+Just a normal fridge.
+meat
+6
+kitchen
+There's a stove with a pan and spatula on it.

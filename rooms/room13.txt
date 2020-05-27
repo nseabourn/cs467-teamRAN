@@ -1,0 +1,16 @@
+13
+-1
+-1
+12
+-1
+This is Room 13's long description.
+This is Room 13's short description.
+null
+null
+null
+null
+south
+room 12
+null
+null
+0
