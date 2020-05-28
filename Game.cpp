@@ -405,6 +405,7 @@ void Game::lookAt(char* object) {
 				row++;
 			}
 		}
+		row++;
 		wrefresh(win);
 	}
 	else {
