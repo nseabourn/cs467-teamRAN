@@ -8,7 +8,7 @@ Quiz::Quiz(std::string nameIn, std::string descriptionIn, std::string answerIn) 
 	correctAnswer = answerIn;
 }
 
-void Quiz::solve(){
+bool Quiz::solve(){
 	char playerInputCharArray[100];
 	wmove(win, 0, 0);
 	wprintw(win, desc);
@@ -40,7 +40,7 @@ void Quiz::solve(){
 				wmove(win, 1, 0);
 				wprintw(win, hitButton);
 				wrefresh(win);
-				return;
+				return true;
 			}
 		}
 	}
@@ -52,6 +52,7 @@ void Quiz::solve(){
 	wmove(win, 1, 0);
 	wprintw(win, hitButton);
 	wrefresh(win);
+	return false;
 
 }
 
