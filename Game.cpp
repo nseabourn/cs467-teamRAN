@@ -562,7 +562,14 @@ void Game::solve(char* object){
 	std::string obj(object);
 	int position = currentRoom->getItemsListPosition(obj);
 	if (position != -1) {
-		currentRoom->getItemsList()[position]->solve();
+		//if solving quiz comes back true, will remove from room
+		if (currentRoom->getItemsList()[position]->solve() == true){
+			move(0, 0);
+			clrtoeol();
+			printw("about to remove quiz");
+			refresh();
+			currentRoom->removeInteractable(currentRoom->getItemsList()[position]);
+		}
 	}
 	else {
 		wmove(win, 0, 0);
