@@ -91,7 +91,6 @@ int Room::getTravelVectorPosition(std::string input){
 }
 
 int Room::getItemsListPosition(std::string input) {
-	
 	for (unsigned int i = 0; i < items.size(); i++) {
 		std::string name = items[i]->getName();
 		if (input.length() != name.length() - 1){
@@ -109,6 +108,12 @@ int Room::getItemsListPosition(std::string input) {
 	return -1;
 }
 
+Interactable* Room::getItemAtPosition(unsigned int i){
+	if(i > items.size()-1)
+		return nullptr;
+	return items[i];
+}
+
 void Room::addInteractable(Interactable* i){
 	items.push_back(i);
 }
@@ -121,13 +126,6 @@ bool Room::removeInteractable(Interactable* i){
 		}
 	}
 	return false;
-	/*
-	std::set<Interactable*>::iterator it = items.find(i);
-	if(it == items.end())
-		return false;
-	items.erase(i);
-	return true;	
-	*/
 }
 
 std::vector<Interactable*> Room::getItemsList() {

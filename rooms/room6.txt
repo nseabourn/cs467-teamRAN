@@ -17,10 +17,12 @@ room 5
 5
 fire extinguisher
 It's a fire extinguisher.
+
 3
 fridge
 Just a normal fridge.
 meat
+
 6
 kitchen
 There's a stove with a pan and spatula on it.

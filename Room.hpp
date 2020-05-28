@@ -47,6 +47,7 @@ public:
 	Room* getWestRoom();
 	int getTravelVectorPosition(std::string);
 	int getItemsListPosition(std::string);
+	Interactable* getItemAtPosition(unsigned int);
 	void addInteractable(Interactable*);
 	bool removeInteractable(Interactable*);
 	std::vector<Interactable*> getItemsList();

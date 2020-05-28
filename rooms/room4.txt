@@ -13,7 +13,11 @@ null
 null
 west
 room 3
-2
+3
+0
+Note from room 4
+description
+
 2
 physics quiz
 physics quiz description
@@ -22,3 +26,5 @@ answer
 2
 physics chest
 physics chest description
+1
+Note from room 4

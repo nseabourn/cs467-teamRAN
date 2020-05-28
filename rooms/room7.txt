@@ -13,7 +13,11 @@ south
 room 4
 west
 room 6
-2
+3
+0
+Note from room 7
+description
+
 2
 Scrambled word quiz
 Scrambled word quiz description
@@ -22,3 +26,5 @@ answer
 2
 Scrambled word Chest
 Scrambled word chest description
+1
+Note from room 7

@@ -13,7 +13,11 @@ null
 null
 west
 room 2
-2
+3
+0
+Note from room 3
+description
+
 2
 Chemistry quiz
 Chemistry quiz description
@@ -22,3 +26,5 @@ answer
 2
 Chemistry Chest
 Chemistry chest description
+1
+Note from room 3
