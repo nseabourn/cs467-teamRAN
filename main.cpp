@@ -182,6 +182,10 @@ int main() {
 			char* object = &(playerInput[6]);
 			game1.solve(object);
 		}
+		else if(strncmp("drop ", playerInput, 5) == 0){
+			char* object = &(playerInput[5]);
+			game1.drop(object);
+		}
 		else if (strncmp("type ", playerInput, 5) == 0) {//just for testing!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 			char* object = &(playerInput[5]);
 			game1.type(object);

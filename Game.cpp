@@ -479,13 +479,13 @@ void Game::gameTake(char* object) {
 	if (position != -1) {
 		//if item can be taken, will remove from room and add to inventory
 		if(currentRoom->getItemsList()[position]->take() == true){
-			inventory.push_back(currentRoom->getItemsList()[position]);
-			currentRoom->removeInteractable(currentRoom->getItemsList()[position]);
 			wmove(win, 0 ,0);
 			wprintw(win, "A(n) %s", currentRoom->getItemsList()[position]->getName());
 			int nameLength = strlen(currentRoom->getItemsList()[position]->getName());
 			wmove(win, 0, nameLength + 5);
 			wprintw(win, "was added to your inventory.");
+			inventory.push_back(currentRoom->getItemsList()[position]);
+			currentRoom->removeInteractable(currentRoom->getItemsList()[position]);
 		} else {
 			wmove(win, 0, 0);
 			wprintw(win, "You cannot take that object.");
@@ -520,6 +520,7 @@ void Game::displayHelpList() {
 	wprintw(win, "\n8. quitgame : This allows the player to quit at any time.");
 	wprintw(win, "\n9. accuse : This allows you to accuse a suspect. Game is over after \n\taccusation.");
 	wprintw(win, "\n10. solve : This allows you to solve a quiz.");
+	wprintw(win, "\n11. drop : This allows you to drop an item in your inventory.");
 	wrefresh(win);
 
 	move(0, 0);
@@ -533,7 +534,6 @@ void Game::displayHelpList() {
 	refresh();
 }
 
-//dummy function
 void Game::displayInventory() {
 	saveScreen();
 
@@ -727,6 +727,45 @@ void Game::open(char* object){
 		wprintw(win, "Sorry, that is not a valid object");
 		wmove(win, 1, 0);
 	}
+	wprintw(win, hitButton);
+	wrefresh(win);
+	getch();
+	previousScreen();
+}
+
+void Game::drop(char* object){
+	saveScreen();
+	
+	
+	move(0, 0);
+	wmove(win, 0, 0);
+	clrtoeol();
+	wclear(win);
+	
+	object[0] = toupper(object[0]);
+	std::string item(object);
+	
+	int inventoryPosition = -1;
+	for(unsigned int i = 0; i < inventory.size(); i++){
+		if (item.compare((std::string)inventory[i]->getName())){
+			inventoryPosition = i;
+		}
+	}
+	
+	if (inventoryPosition != -1){
+		Interactable* itemToBeDropped = inventory[inventoryPosition];
+		currentRoom->addInteractable(itemToBeDropped);
+		wmove(win, 0, 0);
+		wprintw(win, itemToBeDropped->getName());
+		wmove(win, 0, strlen(itemToBeDropped->getName()));
+		wprintw(win, "was dropped from your inventory.");
+		inventory.erase(inventory.begin() + inventoryPosition);
+	} else {
+		wmove(win, 0, 0);
+		wprintw(win, "Sorry, that is not a valid object");
+	}
+	
+	wmove(win, 1, 0);
 	wprintw(win, hitButton);
 	wrefresh(win);
 	getch();

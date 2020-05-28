@@ -60,6 +60,7 @@ public:
 	void gameAccuse(char*);
 	void solve(char*);
 	void open(char*);
+	void drop(char*);
 
 	std::vector<Interactable*> getInteractables();
 	std::vector<Room> getRoomsVector();
