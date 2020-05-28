@@ -116,6 +116,7 @@ void Game::createRooms() {
 			std::getline(inFile, name);
 			std::getline(inFile, description);
 			replaceEscapeCharacters(description);
+
 			switch (interactableType) {
 				//base interactable
 				case 0:
@@ -362,9 +363,6 @@ int Game::displayMainScreen(){
 		//clears window before printing again
 		wclear(win);
 	}
-
-
-
 }
 
 //dummy function
@@ -624,8 +622,6 @@ std::vector<Interactable*> Game::getInteractables(){
 	return interactables;
 }
 
-
-
 void Game::replaceEscapeCharacters(std::string& stringIn){
 	for (unsigned int i = 0; i < stringIn.size(); i++) {
 		if (stringIn[i] == '\\') {
@@ -650,7 +646,6 @@ void Game::setCurrentRoom(Room* roomIn)
 	currentRoom = roomIn;
 }
 
-
 Interactable* Game::getInteractableByName(std::string name){
 	for(std::vector<Interactable*>::iterator it = interactables.begin(); it != interactables.end(); it++){
 		if(strcmp(name.c_str(), (*it)->getName()) == 0){
@@ -660,7 +655,26 @@ Interactable* Game::getInteractableByName(std::string name){
 	return nullptr;
 }
 
+void Game::type(char* object){
+	saveScreen();
 
+	move(0, 0);
+	clrtoeol();
+	wclear(win);
+	object[0] = toupper(object[0]);
+	std::string obj(object);
+	int position = currentRoom->getItemsListPosition(obj);
+	wmove(win, 0, 0);
+	if (position != -1) 
+		wprintw(win, "The object is of type %d", currentRoom->getItemsList()[position]->getType());
+	else 
+		wprintw(win, "Sorry, that is not a valid object");
+	wmove(win, 1, 0);
+	wprintw(win, hitButton);
+	wrefresh(win);
+	getch();
+	previousScreen();
+}
 
 void Game::open(char* object){	
 	saveScreen();

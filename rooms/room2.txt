@@ -13,7 +13,11 @@ south
 room 1
 null
 null
-2
+3
+0
+Note from room 2
+The number 11 is written on it.
+
 2
 Math quiz
 What does the 'A' stand for in PEMDAS?
@@ -23,4 +27,4 @@ Addition
 Math chest
 Math chest description
 1
-Math quiz
+Note from room 2

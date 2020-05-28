@@ -66,6 +66,8 @@ public:
 	void setCurrentRoom(Room*);
 
 	Interactable* getInteractableByName(std::string);
+
+	void type(char*);
 	
 };
 
