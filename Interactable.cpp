@@ -1,13 +1,13 @@
 #include "Interactable.hpp"
 
-Interactable::Interactable() {
+Interactable::Interactable(): type(0) {
 	name = new char[1000];
 	desc = new char[1000];
 	name = (char*)"default";
 	desc = (char*)"default";
 }
 
-Interactable::Interactable(std::string nameIn, std::string descriptionIn) {
+Interactable::Interactable(std::string nameIn, std::string descriptionIn): type(0) {
 	name = new char[1000];
 	desc = new char[1000];
 	strcpy(name, nameIn.c_str());
@@ -34,18 +34,34 @@ char* Interactable::getDescription() {
 	return desc;
 }
 
+int Interactable::getType(){
+	return type;
+}
+
 //------------------------------------------------
 //-------------virtual functions------------------
 //------------------------------------------------
+//-------------Suspect-----------------------------
 bool Interactable::accuse(){
 	wmove(win, 0, 0);
 	wprintw(win, "That object cannot be accused.");
 	return false;
 }
 
+//----------------Quiz---------------------------
+void Interactable::solve(){
+	wmove(win, 0, 0);
+	wprintw(win, "This is not a solvable object.");
+}
+
+//-------------Chest------------------------------
 bool Interactable::unlock(){
 	wmove(win, 0, 0);
 	wprintw(win, "That object cannot be unlocked.");
+	return false;
+}
+
+bool Interactable::getIsLocked(){
 	return false;
 }
 
@@ -54,14 +70,11 @@ void Interactable::addItem(Interactable* item){
 	wprintw(win, "That object cannot contain items.");
 }
 
-void Interactable::solve(){
-	wmove(win, 0, 0);
-	wprintw(win, "This is not a solvable object.");
-}
-
 std::vector<Interactable*> Interactable::getItemsList(){
 	return std::vector<Interactable*>();
 }
+
+void Interactable::empty(){}
 //------------------------------------------------
 //------------------------------------------------
 //------------------------------------------------

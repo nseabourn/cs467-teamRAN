@@ -10,8 +10,10 @@ private:
 public:
 	Chest(std::string, std::string);
 	bool unlock();
+	bool getIsLocked();
 	void addItem(Interactable*);
 	std::vector<Interactable*> getItemsList();
+	void empty();
 };
 
 #endif

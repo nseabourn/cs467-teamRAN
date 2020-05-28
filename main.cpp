@@ -173,9 +173,9 @@ int main() {
 			char* object = &(playerInput[7]);
 			game1.gameAccuse(object);
 		}
-		else if (strncmp("unlock ", playerInput, 7) == 0) { //just to test, will be removed!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			char* object = &(playerInput[7]);
-			game1.unlock(object);
+		else if (strncmp("open ", playerInput, 5) == 0) {
+			char* object = &(playerInput[5]);
+			game1.open(object);
 		}		
 		else if(strncmp("solve ", playerInput, 6) == 0){
 			char* object = &(playerInput[6]);

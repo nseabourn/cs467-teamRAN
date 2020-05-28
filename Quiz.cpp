@@ -1,11 +1,7 @@
 #include "Quiz.hpp"
 
-Quiz::Quiz() {
-
-}
-
-Quiz::Quiz(std::string nameIn, std::string descriptionIn, std::string answerIn) : Interactable(nameIn, descriptionIn) {
-	correctAnswer = answerIn;
+Quiz::Quiz(std::string nameIn, std::string descriptionIn, std::string answerIn) : Interactable(nameIn, descriptionIn), correctAnswer(answerIn) {
+	type = 2;
 }
 
 void Quiz::solve(){

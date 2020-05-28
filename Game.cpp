@@ -534,7 +534,7 @@ void Game::gameAccuse(char* object) {
 	object[0] = toupper(object[0]);
 	std::string obj(object);
 	int position = currentRoom->getItemsListPosition(obj);
-	if (position != -1) {
+	if (position != -1 && currentRoom->getItemsList()[position]->getType() == 1) {
 		gameOver = currentRoom->getItemsList()[position]->accuse();
 	}
 	else {
@@ -561,7 +561,7 @@ void Game::solve(char* object){
 	object[0] = toupper(object[0]);
 	std::string obj(object);
 	int position = currentRoom->getItemsListPosition(obj);
-	if (position != -1) {
+	if (position != -1 && currentRoom->getItemsList()[position]->getType() == 2) {
 		currentRoom->getItemsList()[position]->solve();
 	}
 	else {
@@ -617,14 +617,44 @@ Interactable* Game::getInteractableByName(std::string name){
 
 
 
-void Game::unlock(char* object){// just to test chest, will be removed!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+void Game::open(char* object){	
+	saveScreen();
+
+	move(0, 0);
+	wmove(win, 0, 0);
+	clrtoeol();
+	wclear(win);
 	object[0] = toupper(object[0]);
 	std::string obj(object);
 	int position = currentRoom->getItemsListPosition(obj);
-	if (position != -1 && currentRoom->getItemsList()[position]->unlock()) {
-		std::vector<Interactable*> itemsToAdd = currentRoom->getItemsList()[position]->getItemsList();
-		for(std::vector<Interactable*>::iterator it = itemsToAdd.begin(); it != itemsToAdd.end(); it++){
-			currentRoom->addInteractable(*it);
+	if (position != -1 && currentRoom->getItemsList()[position]->getType() == 3) {
+		if(currentRoom->getItemsList()[position]->getIsLocked()){
+			wprintw(win, "Sorry, the chest is locked");
+			wmove(win, 1, 0);
+		}
+		else{
+			std::vector<Interactable*> itemsToAdd = currentRoom->getItemsList()[position]->getItemsList();
+			wprintw(win, "Objects added to Room %d:", currentRoom->getRoomNumber());
+			int row = 1;
+			for(std::vector<Interactable*>::iterator it = itemsToAdd.begin(); it != itemsToAdd.end(); it++){
+				currentRoom->addInteractable(*it);
+				wmove(win, row, 0);
+				wprintw(win, "\t%s", (*it)->getName());
+				row++;
+			}
+
+			currentRoom->getItemsList()[position]->empty();
+			wprintw(win, "The %s is now empty", currentRoom->getItemsList()[position]->getName());
+			row++;
+			wmove(win, row, 0);
 		}
 	}
+	else {
+		wprintw(win, "Sorry, that is not a valid object");
+		wmove(win, 1, 0);
+	}
+	wprintw(win, hitButton);
+	wrefresh(win);
+	getch();
+	previousScreen();
 }

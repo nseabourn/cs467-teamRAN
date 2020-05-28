@@ -14,6 +14,7 @@ protected:
 	
 	char* name;
 	char* desc;
+	int type; //refer to room template for type number
 	/*std::string longDesc;
 	Room* room; //points to the room this interactable is in. if null, interactable is held by player
 	Room* originalRoom;
@@ -28,8 +29,11 @@ public:
 	char* getName();
 	void freeInteractable();
 	char* getDescription();
+	int getType();
 	virtual bool accuse();
 	virtual bool unlock();
+	virtual bool getIsLocked();
+	virtual void empty();
 	virtual void addItem(Interactable*);
 	virtual void solve();
 	virtual std::vector<Interactable*> getItemsList();

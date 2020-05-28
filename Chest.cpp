@@ -1,8 +1,11 @@
 #include "Chest.hpp"
 
+Chest::Chest(std::string nameIn, std::string descriptionIn) : Interactable(nameIn, descriptionIn), isLocked(true) {
+	type = 3;
+}
 
-Chest::Chest(std::string nameIn, std::string descriptionIn) : Interactable(nameIn, descriptionIn) {
-	isLocked = true;
+bool Chest::getIsLocked(){
+	return isLocked;
 }
 
 bool Chest::unlock(){
@@ -14,12 +17,17 @@ bool Chest::unlock(){
 	return true;
 }
 
+
 void Chest::addItem(Interactable* item){
 	items.push_back(item);
 }
 
 std::vector<Interactable*> Chest::getItemsList() {
 	return items;
+}
+
+void Chest::empty(){
+	items.clear();
 }
 
 /*Chest::Chest(): Interactable{}, successString{"default"}, failString{"default"}, items{std::vector<Interactable*>{}}, isCorrect{false} {}

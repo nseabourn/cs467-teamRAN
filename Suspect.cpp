@@ -1,11 +1,11 @@
 #include "Suspect.hpp"
 
-Suspect::Suspect() {
-	isMurderer = false;
+Suspect::Suspect(): isMurderer(false) {
+	type = 1;
 }
 
-Suspect::Suspect(std::string nameIn, std::string descriptionIn, bool isGuilty) : Interactable(nameIn, descriptionIn) {
-	isMurderer = isGuilty;
+Suspect::Suspect(std::string nameIn, std::string descriptionIn, bool isGuilty) : Interactable(nameIn, descriptionIn), isMurderer(isGuilty) {
+	type = 1;
 }
 
 bool Suspect::accuse() {

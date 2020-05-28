@@ -27,12 +27,11 @@ private:
 	std::vector<Room> rooms;
 	std::vector<Interactable*> interactables;
 	std::vector<Interactable*> inventory;
-	//std::map<std::string, Interactable> interactables; //key is name of interactable
-	//std::map<
 	Room* currentRoom;
 	bool gameOver = false;
 
 	void replaceEscapeCharacters(std::string&);
+
 public:
 	Room * getCurrentRoom();
 	bool getGameOverStatus();
@@ -60,7 +59,7 @@ public:
 
 	void gameAccuse(char*);
 	void solve(char*);
-	void unlock(char*);// just to test chest, will be removed!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	void open(char*);
 
 	std::vector<Interactable*> getInteractables();
 	std::vector<Room> getRoomsVector();
