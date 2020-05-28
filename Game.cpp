@@ -454,15 +454,36 @@ void Game::travelTo(char* destination){
 	
 }
 
-//dummy function
-void Game::take() {
+void Game::gameTake(char* object) {
 	saveScreen();
 
 	move(0, 0);
 	clrtoeol();
 	wclear(win);
-	wprintw(win, "Taking .");
-	wprintw(win, "\n%s", hitButton);
+	object[0] = toupper(object[0]);
+	std::string obj(object);
+	int position = currentRoom->getItemsListPosition(obj);
+	if (position != -1) {
+		//if item can be taken, will remove from room and add to inventory
+		if(currentRoom->getItemsList()[position]->take() == true){
+			inventory.push_back(currentRoom->getItemsList()[position]);
+			currentRoom->removeInteractable(currentRoom->getItemsList()[position]);
+			wmove(win, 0 ,0);
+			wprintw(win, "A(n) %s", currentRoom->getItemsList()[position]->getName());
+			int nameLength = strlen(currentRoom->getItemsList()[position]->getName());
+			wmove(win, 0, nameLength + 5);
+			wprintw(win, "was added to your inventory.");
+		} else {
+			wmove(win, 0, 0);
+			wprintw(win, "You cannot take that object.");
+		}
+	}
+	else {
+		wmove(win, 0, 0);
+		wprintw(win, "Sorry, that is not a valid object");
+	}
+	wmove(win, 1, 0);
+	wprintw(win, hitButton);
 	wrefresh(win);
 	getch();
 
@@ -503,14 +524,22 @@ void Game::displayHelpList() {
 void Game::displayInventory() {
 	saveScreen();
 
+
+	int row = 0;
 	move(0, 0);
 	clrtoeol();
 	wclear(win);
-	wprintw(win, "Displaying inventory.");
-	wprintw(win, "\n%s", hitButton);
+	for (unsigned int i = 0; i < inventory.size(); i++){
+		wmove(win, row, 0);
+		wprintw(win, inventory[i]->getName());
+		row++;
+	}
+	wmove(win, row, 0);
+	
+	
+	wprintw(win, hitButton);
 	wrefresh(win);
 	getch();
-
 	previousScreen();
 }
 
@@ -566,11 +595,17 @@ void Game::solve(char* object){
 		//if solving quiz comes back true, will remove from room
 		if (currentRoom->getItemsList()[position]->solve() == true){
 			currentRoom->removeInteractable(currentRoom->getItemsList()[position]);
-			std::string key = "Key";
+			std::string key = "Key\n";
 			std::string description = "This will unlock a chest";
 			Interactable* newKey = new Interactable(key, description);
 			interactables.push_back(newKey);
 			currentRoom->addInteractable(newKey);
+			wclear(win);
+			wmove(win, 0, 0);
+			wprintw(win, "A key was added to the room.");
+			wmove(win, 1, 0);
+			wprintw(win, hitButton);
+			wrefresh(win);
 		}
 	}
 	else {
@@ -581,6 +616,7 @@ void Game::solve(char* object){
 		wrefresh(win);
 	}
 	getch();
+	
 	previousScreen();
 }
 

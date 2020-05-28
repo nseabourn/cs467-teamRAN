@@ -121,13 +121,6 @@ bool Room::removeInteractable(Interactable* i){
 		}
 	}
 	return false;
-	/*
-	std::set<Interactable*>::iterator it = items.find(i);
-	if(it == items.end())
-		return false;
-	items.erase(i);
-	return true;	
-	*/
 }
 
 std::vector<Interactable*> Room::getItemsList() {

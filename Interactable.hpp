@@ -36,6 +36,7 @@ public:
 	virtual void empty();
 	virtual void addItem(Interactable*);
 	virtual bool solve();
+	bool take();
 	virtual std::vector<Interactable*> getItemsList();
 	/*Interactable(std::string name_, std::string desc, Room* r, bool h);
 	void setName(std::string name_);

@@ -154,7 +154,8 @@ int main() {
 			game1.travelTo(playerInput);
 		}
 		else if (strncmp("take ", playerInput, 5) == 0) {
-			game1.take();
+			char* object = &(playerInput[5]);
+			game1.gameTake(object);
 		}
 		else if (strcmp("help", playerInput) == 0) {
 			game1.displayHelpList();

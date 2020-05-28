@@ -71,6 +71,16 @@ void Interactable::addItem(Interactable* item){
 	wprintw(win, "That object cannot contain items.");
 }
 
+//--------Keys, etc -----------------------
+bool Interactable::take(){
+	if (type == 0) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
 std::vector<Interactable*> Interactable::getItemsList(){
 	return std::vector<Interactable*>();
 }

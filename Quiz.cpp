@@ -36,6 +36,7 @@ bool Quiz::solve(){
 				wmove(win, 1, 0);
 				wprintw(win, hitButton);
 				wrefresh(win);
+				getch();
 				return true;
 			}
 		}

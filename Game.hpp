@@ -52,7 +52,7 @@ public:
 	void loadGame();
 	void lookAt(char*);
 	void travelTo(char*);
-	void take();
+	void gameTake(char*);
 	void displayHelpList();
 	void displayInventory();
 	void saveGame();
