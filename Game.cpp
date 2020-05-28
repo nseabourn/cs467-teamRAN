@@ -391,12 +391,26 @@ void Game::lookAt(char* object) {
 	object[0] = toupper(object[0]);
 	std::string obj(object);
 	int position = currentRoom->getItemsListPosition(obj);
-	if (position != -1) {
+	int inventoryPosition = -1;
+	for(unsigned int i = 0; i < inventory.size(); i++){
+		if (obj.compare((std::string)inventory[i]->getName())){
+			inventoryPosition = i;
+		}
+	}
+	if (position != -1 || inventoryPosition != -1) {
+		char* name;
+		char* description;
+		if (position != -1){
+			name = currentRoom->getItemsList()[position]->getName();
+			description = currentRoom->getItemsList()[position]->getDescription();
+		} else if (inventoryPosition != -1){
+			name = inventory[inventoryPosition]->getName();
+			description = inventory[inventoryPosition]->getDescription();
+		}
 		wmove(win, row, 0);
-		wprintw(win, currentRoom->getItemsList()[position]->getName());
+		wprintw(win, name);
 		row++;
 		wmove(win, row, 0);
-		char* description = currentRoom->getItemsList()[position]->getDescription();
 		wprintw(win, description);
 		for (unsigned int i = 0; i < strlen(description); i++) {
 			if (description[i] == '\n') {
@@ -404,13 +418,14 @@ void Game::lookAt(char* object) {
 			}
 		}
 		row++;
-		wrefresh(win);
+		
 	}
 	else {
 		wmove(win, row, 0);
 		wprintw(win, "That is an invalid object.");
 		row++;
 	}
+	wrefresh(win);
 	wmove(win, row, 0);
 	wprintw(win, hitButton);
 	wrefresh(win);
