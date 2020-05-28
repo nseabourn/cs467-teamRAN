@@ -49,9 +49,10 @@ bool Interactable::accuse(){
 }
 
 //----------------Quiz---------------------------
-void Interactable::solve(){
+bool Interactable::solve(){
 	wmove(win, 0, 0);
 	wprintw(win, "This is not a solvable object.");
+	return false;
 }
 
 //-------------Chest------------------------------

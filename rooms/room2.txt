@@ -16,7 +16,7 @@ null
 2
 2
 Math quiz
-What does the 'A' stand for in PEMDAS?\n
+What does the 'A' stand for in PEMDAS?
 Addition
 
 3
