@@ -564,11 +564,12 @@ void Game::solve(char* object){
 	if (position != -1) {
 		//if solving quiz comes back true, will remove from room
 		if (currentRoom->getItemsList()[position]->solve() == true){
-			move(0, 0);
-			clrtoeol();
-			printw("about to remove quiz");
-			refresh();
 			currentRoom->removeInteractable(currentRoom->getItemsList()[position]);
+			std::string key = "Key";
+			std::string description = "This will unlock a chest";
+			Interactable* newKey = new Interactable(key, description);
+			interactables.push_back(newKey);
+			currentRoom->addInteractable(newKey);
 		}
 	}
 	else {
