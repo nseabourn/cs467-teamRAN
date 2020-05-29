@@ -22,14 +22,14 @@ description
 Key from room 3
 This key was retrieved from the chemistry quiz
 
-2
-Chemistry quiz
-Chemistry quiz description
-answer
-Key from room 3
-
-2
-Chemistry Chest
+3
+Chemistry chest
 Chemistry chest description
 1
 Note from room 3
+
+2
+Chemistry quiz
+Chemistry quiz description
+Answer
+Key from room 3

@@ -22,14 +22,14 @@ description
 Key from room 7
 This key was retrieved from the scrambled word quiz
 
-2
-Scrambled word quiz
-Scrambled word quiz description
-answer
-Key from room 7
-
-2
+3
 Scrambled word Chest
 Scrambled word chest description
 1
 Note from room 7
+
+2
+Scrambled word quiz
+Scrambled word quiz description
+Answer
+Key from room 7

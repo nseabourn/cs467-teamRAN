@@ -22,14 +22,14 @@ The number 11 is written on it.
 Key from room 2
 This key was retrieved from the math quiz
 
-2
-Math quiz
-What does the 'A' stand for in PEMDAS?
-Addition
-Key from room 2
-
 3
 Math chest
 Math chest description
 1
 Note from room 2
+
+2
+Math quiz
+What does the 'A' stand for in PEMDAS?
+Addition
+Key from room 2
