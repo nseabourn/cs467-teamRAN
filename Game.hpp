@@ -16,6 +16,7 @@
 #include "common.hpp"
 #include "Interactable.hpp"
 #include "Chest.hpp"
+#include "Food.hpp"
 #include "Quiz.hpp"
 #include "Room.hpp"
 #include "Suspect.hpp"
@@ -68,6 +69,7 @@ public:
 	void fastTravel(char*);
 	void addToRoomsVisited(Room*);
 	void gameFrisk(char*);
+	void gameEat(char*);
 
 	std::vector<Interactable*> getInteractables();
 	std::vector<Room> getRoomsVector();

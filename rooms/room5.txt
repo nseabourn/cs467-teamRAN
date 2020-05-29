@@ -13,7 +13,10 @@ south
 room 2
 null
 null
-0
+1
+7
+Apple
+A bright red apple.
 0
 notepad
 Written on the notepad is "24-11"

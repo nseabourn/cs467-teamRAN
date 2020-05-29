@@ -84,12 +84,17 @@ void Interactable::addItem(Interactable* item){
 
 //--------Keys, etc -----------------------
 bool Interactable::take(){
-	if (type == 0) {
+	if (type == 0 || type == 7) {
 		return true;
 	}
 	else {
 		return false;
 	}
+}
+
+void Interactable::eat(){
+	wmove(win, 0, 0);
+	wprintw(win, "You cannot eat that object.");
 }
 
 std::vector<Interactable*> Interactable::getItemsList(){

@@ -179,6 +179,11 @@ void Game::createRooms() {
 				//creator
 				case 6:
 					break;
+					
+				//Food	
+				case 7:
+					objectPointer = new Food(name, description);
+					break;
 
 				default:
 					break;
@@ -534,6 +539,7 @@ void Game::displayHelpList() {
 	wprintw(win, "\n13. fasttravel room (number): This allows you to quickly go to a\n\tpreviously visited room");
 	wprintw(win, "\n14. unlock (chest name): This attempts to unlock the chest.");
 	wprintw(win, "\n15. open (chest name): This attempts to open the chest.");
+	wprintw(win, "\n16. eat (item name) : This allows you to eat an item in your inventory.");
 	wrefresh(win);
 
 	move(0, 0);
@@ -917,6 +923,38 @@ void Game::gameFrisk(char* suspect){
 	int position = currentRoom->getItemsListPosition(sus);
 	if (position != -1) {
 		currentRoom->getItemsList()[position]->frisk();
+	}
+	
+	wmove(win, 1, 0);
+	wprintw(win, hitButton);
+	wrefresh(win);
+	getch();
+	previousScreen();
+}
+
+void Game::gameEat(char* object){
+	saveScreen();
+	
+	move(0, 0);
+	wmove(win, 0, 0);
+	clrtoeol();
+	wclear(win);
+	
+	object[0] = toupper(object[0]);
+	std::string foodName(object);
+	int inventoryPosition = -1;
+	for(unsigned int i = 0; i < inventory.size(); i++){
+		if (foodName.compare((std::string)inventory[i]->getName())){
+			inventoryPosition = i;
+		}
+	}
+	if (inventoryPosition != -1){
+		Interactable* itemToBeEaten = inventory[inventoryPosition];
+		itemToBeEaten->eat();
+		inventory.erase(inventory.begin() + inventoryPosition);
+	} else {
+		wmove(win, 0, 0);
+		wprintw(win, "That item is not in your inventory");
 	}
 	
 	wmove(win, 1, 0);

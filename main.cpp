@@ -203,6 +203,10 @@ int main() {
 			char* suspect = &(playerInput[6]);
 			game1.gameFrisk(suspect);
 		}
+		else if (strncmp("eat ", playerInput, 4) == 0){
+			char* object = &(playerInput[4]);
+			game1.gameEat(object);
+		}
 		else if (strncmp("type ", playerInput, 5) == 0) {//just for testing!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 			char* object = &(playerInput[5]);
 			game1.type(object);

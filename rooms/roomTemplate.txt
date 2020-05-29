@@ -22,4 +22,5 @@ Type of first interactable
 	4 = block
 	5 = unblock
 	6 = creator
+	7 = Food
 Parameters of interactable constructor
