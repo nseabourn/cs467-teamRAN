@@ -1,6 +1,6 @@
 #include "Chest.hpp"
 
-Chest::Chest(std::string nameIn, std::string descriptionIn) : Interactable(nameIn, descriptionIn), isLocked(true) {
+Chest::Chest(std::string nameIn, std::string descriptionIn, Interactable* keyIn) : Interactable(nameIn, descriptionIn), isLocked(true), key(keyIn) {
 	type = 3;
 }
 
@@ -8,13 +8,20 @@ bool Chest::getIsLocked(){
 	return isLocked;
 }
 
-bool Chest::unlock(){
-	if(!isLocked)
-		return false;
-	isLocked = false;
-	wmove(win, 0, 0);
-	wprintw(win, "%s is unlocked.", name);
-	return true;
+//returns item used to unlock it, or nullptr if not unlocked, or this if already unlocked
+Interactable* Chest::unlock(std::vector<Interactable*> inventory){
+	if(!isLocked){
+		return this;
+	}
+
+	for(std::vector<Interactable*>::iterator it = inventory.begin(); it != inventory.end(); it++){
+		if((*it) == key){
+			isLocked = false;
+			return key;
+		}
+	}
+
+	return nullptr;
 }
 
 

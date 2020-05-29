@@ -62,6 +62,7 @@ public:
 	void question(char*);
 	void gameAccuse(char*);
 	void solve(char*);
+	void unlock(char*);
 	void open(char*);
 	void drop(char*);
 	void fastTravel(char*);

@@ -32,7 +32,7 @@ public:
 	int getType();
 	virtual bool accuse();
 	virtual void question();
-	virtual bool unlock();
+	virtual Interactable* unlock(std::vector<Interactable*>);
 	virtual bool getIsLocked();
 	virtual void empty();
 	virtual void addItem(Interactable*);

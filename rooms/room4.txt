@@ -25,6 +25,7 @@ This key was retrieved from the physics quiz
 3
 Physics chest
 Physics chest description
+Key from room 4
 1
 Note from room 4
 

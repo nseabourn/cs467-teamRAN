@@ -62,10 +62,10 @@ Interactable* Interactable::solve(){
 }
 
 //-------------Chest------------------------------
-bool Interactable::unlock(){
+Interactable* Interactable::unlock(std::vector<Interactable*>){
 	wmove(win, 0, 0);
 	wprintw(win, "That object cannot be unlocked.");
-	return false;
+	return nullptr;
 }
 
 bool Interactable::getIsLocked(){

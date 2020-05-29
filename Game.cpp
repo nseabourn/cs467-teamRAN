@@ -148,14 +148,16 @@ void Game::createRooms() {
 
 				//chest
 				case 3:{
-					objectPointer = new Chest(name, description);
+					std::string itemName;
+					std::getline(inFile, itemName);
+					Interactable* item = getInteractableByName(itemName);
+					objectPointer = new Chest(name, description, item);
 					int numItems;
 					inFile >> numItems;
 					std::getline(inFile, inputLine);
 					for(int i=0; i<numItems; i++){
-						std::string itemName;
 						std::getline(inFile, itemName);
-						Interactable* item = getInteractableByName(itemName);
+						item = getInteractableByName(itemName);
 						if(item != nullptr && rooms[roomNumber].removeInteractable(item)){
 							objectPointer->addItem(item);
 						}
@@ -530,6 +532,8 @@ void Game::displayHelpList() {
 	wprintw(win, "\n11. solve (quiz name): This allows you to solve a quiz.");
 	wprintw(win, "\n12. drop (item): This allows you to drop an item in your inventory.");
 	wprintw(win, "\n13. fasttravel room (number): This allows you to quickly go to a\n\tpreviously visited room");
+	wprintw(win, "\n14. unlock (chest name): This attempts to unlock the chest.");
+	wprintw(win, "\n15. open (chest name): This attempts to open the chest.");
 	wrefresh(win);
 
 	move(0, 0);
@@ -642,12 +646,7 @@ void Game::solve(char* object){
 		Interactable* reward = currentRoom->getItemsList()[position]->solve();
 		if (reward != nullptr){
 			currentRoom->removeInteractable(currentRoom->getItemsList()[position]);
-			currentRoom->addInteractable(reward);/*
-			std::string key = "Key\n";
-			std::string description = "This will unlock a chest";
-			Interactable* newKey = new Interactable(key, description);
-			interactables.push_back(newKey);
-			currentRoom->addInteractable(newKey);*/
+			currentRoom->addInteractable(reward);
 			wclear(win);
 			wmove(win, 0, 0);
 			wprintw(win, reward->getName());
@@ -728,6 +727,47 @@ void Game::type(char* object){
 	previousScreen();
 }
 
+void Game::unlock(char* object){
+	saveScreen();
+
+	move(0, 0);
+	wmove(win, 0, 0);
+	clrtoeol();
+	wclear(win);
+	object[0] = toupper(object[0]);
+	std::string obj(object);
+	int position = currentRoom->getItemsListPosition(obj);
+	if (position != -1 && currentRoom->getItemsList()[position]->getType() == 3) {
+		Interactable* key = currentRoom->getItemsList()[position]->unlock(inventory);
+
+		if(key == nullptr){
+			wprintw(win, "Sorry, you couldn't unlock the %s", currentRoom->getItemsList()[position]->getName());
+			wmove(win, 1, 0);
+		}
+		else if(key == currentRoom->getItemsList()[position]){
+			wprintw(win, "The %s", currentRoom->getItemsList()[position]->getName());
+			wmove(win, 0, 4 + strlen(currentRoom->getItemsList()[position]->getName()));
+			wprintw(win, "is already unlocked");
+			wmove(win, 1, 0);
+
+		}
+		else{
+			wprintw(win, "You unlocked the %s", currentRoom->getItemsList()[position]->getName());
+			wmove(win, 0, 18 + strlen(currentRoom->getItemsList()[position]->getName()));
+			wprintw(win, "using your %s", key->getName());
+			wmove(win, 1, 0);
+		}
+	}
+	else {
+		wprintw(win, "Sorry, that is not a valid object");
+		wmove(win, 1, 0);
+	}
+	wprintw(win, hitButton);
+	wrefresh(win);
+	getch();
+	previousScreen();	
+}
+
 void Game::open(char* object){	
 	saveScreen();
 
@@ -747,20 +787,31 @@ void Game::open(char* object){
 		}
 		else{
 			std::vector<Interactable*> itemsToAdd = currentRoom->getItemsList()[position]->getItemsList();
-			wprintw(win, "Objects added to Room %d:", currentRoom->getRoomNumber());
-			int row = 1;
-			for(std::vector<Interactable*>::iterator it = itemsToAdd.begin(); it != itemsToAdd.end(); it++){
-				currentRoom->addInteractable(*it);
-				wmove(win, row, 0);
-				wprintw(win, "\t%s", (*it)->getName());
-				row++;
+			if(itemsToAdd.size() == 0){
+				wprintw(win, "The %s", currentRoom->getItemsList()[position]->getName());
+				wmove(win, 0, 4 + strlen(currentRoom->getItemsList()[position]->getName()));
+				wprintw(win, "is empty");
+				wmove(win, 1, 0);
 			}
+			else{
+				wprintw(win, "Objects added to Room %d:", currentRoom->getRoomNumber());
+				int row = 1;
+				for(std::vector<Interactable*>::iterator it = itemsToAdd.begin(); it != itemsToAdd.end(); it++){
+					currentRoom->addInteractable(*it);
+					wmove(win, row, 0);
+					wprintw(win, "\t%s", (*it)->getName());
+					row++;
+				}
 
-			currentRoom->getItemsList()[position]->empty();
-			wmove(win, row, 0);
-			wprintw(win, "The %s is now empty", currentRoom->getItemsList()[position]->getName());
-			row++;
-			wmove(win, row, 0);
+				currentRoom->getItemsList()[position]->empty();
+				wmove(win, row, 0);
+				wprintw(win, "The %s", currentRoom->getItemsList()[position]->getName());
+				wmove(win, row, 4 + strlen(currentRoom->getItemsList()[position]->getName()));
+				wprintw(win, "is now empty");
+
+				row++;
+				wmove(win, row, 0);
+			}
 		}
 	}
 	else {

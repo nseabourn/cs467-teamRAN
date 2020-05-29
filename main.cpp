@@ -183,6 +183,10 @@ int main() {
 			char* object = &(playerInput[5]);
 			game1.open(object);
 		}		
+		else if (strncmp("unlock ", playerInput, 7) == 0) {
+			char* object = &(playerInput[7]);
+			game1.unlock(object);
+		}		
 		else if(strncmp("solve ", playerInput, 6) == 0){
 			char* object = &(playerInput[6]);
 			game1.solve(object);

@@ -25,6 +25,7 @@ This key was retrieved from the scrambled word quiz
 3
 Scrambled word Chest
 Scrambled word chest description
+Key from room 7
 1
 Note from room 7
 
