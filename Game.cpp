@@ -487,9 +487,9 @@ void Game::gameTake(char* object) {
 		//if item can be taken, will remove from room and add to inventory
 		if(currentRoom->getItemsList()[position]->take() == true){
 			wmove(win, 0 ,0);
-			wprintw(win, "A(n) %s", currentRoom->getItemsList()[position]->getName());
+			wprintw(win, "The %s", currentRoom->getItemsList()[position]->getName());
 			int nameLength = strlen(currentRoom->getItemsList()[position]->getName());
-			wmove(win, 0, nameLength + 5);
+			wmove(win, 0, nameLength + 4);
 			wprintw(win, "was added to your inventory.");
 			inventory.push_back(currentRoom->getItemsList()[position]);
 			currentRoom->removeInteractable(currentRoom->getItemsList()[position]);
