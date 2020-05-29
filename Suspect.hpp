@@ -6,12 +6,15 @@
 class Suspect: public Interactable{
 private:
 	bool isMurderer;
+	char* answer;
 	//will add all the suspect details here
 public:
 	Suspect();
-	Suspect(std::string, std::string, bool);
-
-	virtual bool accuse();
+	Suspect(std::string, std::string, bool, std::string);
+	~Suspect();
+	
+	void question();
+	bool accuse();
 
 	/*Suspect();
 	Suspect(bool m, std::string name_, std::string desc, Room* r, Game* g);

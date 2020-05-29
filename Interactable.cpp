@@ -48,6 +48,12 @@ bool Interactable::accuse(){
 	return false;
 }
 
+void Interactable::question(){
+	wmove(win, 0, 0);
+	wprintw(win, "That object cannot be questioned.");
+	wmove(win, 1, 0);
+}
+
 //----------------Quiz---------------------------
 bool Interactable::solve(){
 	wmove(win, 0, 0);

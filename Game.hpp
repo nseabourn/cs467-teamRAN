@@ -57,6 +57,7 @@ public:
 	void displayInventory();
 	void saveGame();
 
+	void question(char*);
 	void gameAccuse(char*);
 	void solve(char*);
 	void open(char*);

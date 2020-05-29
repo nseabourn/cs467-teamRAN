@@ -174,6 +174,10 @@ int main() {
 			char* object = &(playerInput[7]);
 			game1.gameAccuse(object);
 		}
+		else if (strncmp("question ", playerInput, 9) == 0) {
+			char* object = &(playerInput[9]);
+			game1.question(object);
+		}
 		else if (strncmp("open ", playerInput, 5) == 0) {
 			char* object = &(playerInput[5]);
 			game1.open(object);

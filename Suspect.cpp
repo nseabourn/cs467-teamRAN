@@ -4,8 +4,21 @@ Suspect::Suspect(): isMurderer(false) {
 	type = 1;
 }
 
-Suspect::Suspect(std::string nameIn, std::string descriptionIn, bool isGuilty) : Interactable(nameIn, descriptionIn), isMurderer(isGuilty) {
+Suspect::Suspect(std::string nameIn, std::string descriptionIn, bool isGuilty, std::string answerIn) : Interactable(nameIn, descriptionIn), isMurderer(isGuilty) {
 	type = 1;
+	answer = new char[1000];
+	strcpy(answer, answerIn.c_str());
+}
+
+Suspect::~Suspect(){
+	delete[] answer;
+}
+
+void Suspect::question(){
+	wclear(win);
+	wmove(win, 0, 0);
+	wprintw(win, answer);
+	wmove(win, 1, 0);
 }
 
 bool Suspect::accuse() {

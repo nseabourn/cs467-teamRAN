@@ -31,6 +31,7 @@ public:
 	char* getDescription();
 	int getType();
 	virtual bool accuse();
+	virtual void question();
 	virtual bool unlock();
 	virtual bool getIsLocked();
 	virtual void empty();

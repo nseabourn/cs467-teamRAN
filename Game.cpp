@@ -128,7 +128,8 @@ void Game::createRooms() {
 					guilty = false;
 					inFile >> guilty;
 					std::getline(inFile, inputLine);
-					objectPointer = new Suspect(name, description, guilty);
+					std::getline(inFile, answer);
+					objectPointer = new Suspect(name, description, guilty, answer);
 					std::getline(inFile, inputLine);
 					break;
 
@@ -568,6 +569,30 @@ void Game::saveGame(){
 	getch();
 }
 
+void Game::question(char* object){
+	saveScreen();
+
+	move(0, 0);
+	clrtoeol();
+	wclear(win);
+	object[0] = toupper(object[0]);
+	std::string obj(object);
+	int position = currentRoom->getItemsListPosition(obj);
+	if (position != -1 && currentRoom->getItemsList()[position]->getType() == 1) {
+		currentRoom->getItemsList()[position]->question();
+	}
+	else {
+		wmove(win, 0, 0);
+		wprintw(win, "Sorry, that is not a valid object");
+		wmove(win, 1, 0);
+	}
+	wprintw(win, hitButton);
+	wrefresh(win);
+	getch();
+
+	previousScreen();
+}
+
 void Game::gameAccuse(char* object) {
 	saveScreen();
 
@@ -703,7 +728,9 @@ void Game::open(char* object){
 	int position = currentRoom->getItemsListPosition(obj);
 	if (position != -1 && currentRoom->getItemsList()[position]->getType() == 3) {
 		if(currentRoom->getItemsList()[position]->getIsLocked()){
-			wprintw(win, "Sorry, the chest is locked");
+			wprintw(win, "Sorry, the %s", currentRoom->getItemsList()[position]->getName());
+			wmove(win, 0, 11 + strlen(currentRoom->getItemsList()[position]->getName()));
+			wprintw(win, "is locked");
 			wmove(win, 1, 0);
 		}
 		else{
@@ -718,6 +745,7 @@ void Game::open(char* object){
 			}
 
 			currentRoom->getItemsList()[position]->empty();
+			wmove(win, row, 0);
 			wprintw(win, "The %s is now empty", currentRoom->getItemsList()[position]->getName());
 			row++;
 			wmove(win, row, 0);
