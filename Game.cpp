@@ -134,11 +134,17 @@ void Game::createRooms() {
 					break;
 
 				//quiz
-				case 2:
+				case 2:{
 					std::getline(inFile, answer);
-					objectPointer = new Quiz(name, description, answer);
+					std::string itemName;
+					std::getline(inFile, itemName);
+					Interactable* item = getInteractableByName(itemName);
+					if(item != nullptr)
+						rooms[roomNumber].removeInteractable(item);
+					objectPointer = new Quiz(name, description, answer, item);
 					std::getline(inFile, inputLine);
 					break;
+				}
 
 				//chest
 				case 3:{
@@ -630,17 +636,21 @@ void Game::solve(char* object){
 	std::string obj(object);
 	int position = currentRoom->getItemsListPosition(obj);
 	if (position != -1 && currentRoom->getItemsList()[position]->getType() == 2) {
-		//if solving quiz comes back true, will remove from room
-		if (currentRoom->getItemsList()[position]->solve() == true){
+		//if solving quiz comes back with a reward, will remove quiz from room and add reward
+		Interactable* reward = currentRoom->getItemsList()[position]->solve();
+		if (reward != nullptr){
 			currentRoom->removeInteractable(currentRoom->getItemsList()[position]);
+			currentRoom->addInteractable(reward);/*
 			std::string key = "Key\n";
 			std::string description = "This will unlock a chest";
 			Interactable* newKey = new Interactable(key, description);
 			interactables.push_back(newKey);
-			currentRoom->addInteractable(newKey);
+			currentRoom->addInteractable(newKey);*/
 			wclear(win);
 			wmove(win, 0, 0);
-			wprintw(win, "A key was added to the room.");
+			wprintw(win, reward->getName());
+			wmove(win, 0, strlen(reward->getName()));
+			wprintw(win, "was added to the room.");
 			wmove(win, 1, 0);
 			wprintw(win, hitButton);
 			wrefresh(win);

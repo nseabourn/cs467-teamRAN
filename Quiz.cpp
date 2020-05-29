@@ -1,10 +1,10 @@
 #include "Quiz.hpp"
 
-Quiz::Quiz(std::string nameIn, std::string descriptionIn, std::string answerIn) : Interactable(nameIn, descriptionIn), correctAnswer(answerIn) {
+Quiz::Quiz(std::string nameIn, std::string descriptionIn, std::string answerIn, Interactable* rewardIn) : Interactable(nameIn, descriptionIn), correctAnswer(answerIn), reward(rewardIn) {
 	type = 2;
 }
 
-bool Quiz::solve(){
+Interactable* Quiz::solve(){
 	char playerInputCharArray[100];
 	wmove(win, 0, 0);
 	wprintw(win, desc);
@@ -37,7 +37,7 @@ bool Quiz::solve(){
 				wprintw(win, hitButton);
 				wrefresh(win);
 				getch();
-				return true;
+				return reward;
 			}
 		}
 	}
@@ -49,7 +49,7 @@ bool Quiz::solve(){
 	wmove(win, 1, 0);
 	wprintw(win, hitButton);
 	wrefresh(win);
-	return false;
+	return nullptr;
 
 }
 

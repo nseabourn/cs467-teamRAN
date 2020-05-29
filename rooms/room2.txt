@@ -13,15 +13,20 @@ south
 room 1
 null
 null
-3
+4
 0
 Note from room 2
 The number 11 is written on it.
+
+0
+Key from room 2
+This key was retrieved from the math quiz
 
 2
 Math quiz
 What does the 'A' stand for in PEMDAS?
 Addition
+Key from room 2
 
 3
 Math chest

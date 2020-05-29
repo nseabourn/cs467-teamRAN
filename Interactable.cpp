@@ -55,10 +55,10 @@ void Interactable::question(){
 }
 
 //----------------Quiz---------------------------
-bool Interactable::solve(){
+Interactable* Interactable::solve(){
 	wmove(win, 0, 0);
 	wprintw(win, "This is not a solvable object.");
-	return false;
+	return nullptr;
 }
 
 //-------------Chest------------------------------
