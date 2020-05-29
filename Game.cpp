@@ -518,16 +518,17 @@ void Game::displayHelpList() {
 	wmove(win, 0, 0);
 	wprintw(win, "These are available commands during gameplay.");
 	wprintw(win, "\n1. look : This repeats the long explanation of the room");
-	wprintw(win, "\n2. look at : This gives an explanation or the object.");
-	wprintw(win, "\n3. go : This allows you to travel to adjacent rooms.");
-	wprintw(win, "\n4. take : This allows you to put an object in your inventory.");
+	wprintw(win, "\n2. look at (object name): This gives an explanation or the object.");
+	wprintw(win, "\n3. go (compass direction or exit description): This allows you to travel\n\tto adjacent rooms.");
+	wprintw(win, "\n4. take (item name): This allows you to put an object in your inventory.");
 	wprintw(win, "\n5. help : This will bring up the available commands during gameplay.");
 	wprintw(win, "\n6. inventory : This will list the contents of your inventory.");
 	wprintw(win, "\n7. savegame : This will allow you to save your game.");
 	wprintw(win, "\n8. quitgame : This allows the player to quit at any time.");
-	wprintw(win, "\n9. accuse : This allows you to accuse a suspect. Game is over after \n\taccusation.");
-	wprintw(win, "\n10. solve : This allows you to solve a quiz.");
-	wprintw(win, "\n11. drop : This allows you to drop an item in your inventory.");
+	wprintw(win, "\n9. accuse (suspect name): This allows you to accuse a suspect. Game is\n\tover after accusation.");
+	wprintw(win, "\n10. solve (quiz name): This allows you to solve a quiz.");
+	wprintw(win, "\n11. drop (item): This allows you to drop an item in your inventory.");
+	wprintw(win, "\n12. fasttravel room (number): This allows you to quickly go to a\n\tpreviously visited room");
 	wrefresh(win);
 
 	move(0, 0);
