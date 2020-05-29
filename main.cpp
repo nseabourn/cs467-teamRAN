@@ -124,6 +124,7 @@ int main() {
 
 	//runs until game is over
 	while (game1.getGameOverStatus() == false) {
+		game1.addToRoomsVisited(game1.getCurrentRoom());
 		game1.getCurrentRoom()->printDescription();
 		move(0, 0);
 
@@ -189,6 +190,10 @@ int main() {
 		else if(strncmp("drop ", playerInput, 5) == 0){
 			char* object = &(playerInput[5]);
 			game1.drop(object);
+		}
+		else if(strncmp("fasttravel room ", playerInput, 16) == 0){
+			char* location = &(playerInput[16]);
+			game1.fastTravel(location);
 		}
 		else if (strncmp("type ", playerInput, 5) == 0) {//just for testing!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 			char* object = &(playerInput[5]);

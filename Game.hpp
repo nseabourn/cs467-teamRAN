@@ -11,6 +11,7 @@
 #include <string>
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include "common.hpp"
 #include "Interactable.hpp"
@@ -25,6 +26,7 @@
 class Game {
 private:
 	std::vector<Room> rooms;
+	std::vector<Room*> roomsVisited;
 	std::vector<Interactable*> interactables;
 	std::vector<Interactable*> inventory;
 	Room* currentRoom;
@@ -62,6 +64,8 @@ public:
 	void solve(char*);
 	void open(char*);
 	void drop(char*);
+	void fastTravel(char*);
+	void addToRoomsVisited(Room*);
 
 	std::vector<Interactable*> getInteractables();
 	std::vector<Room> getRoomsVector();
