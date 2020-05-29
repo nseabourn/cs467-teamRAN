@@ -799,3 +799,44 @@ void Game::drop(char* object){
 	getch();
 	previousScreen();
 }
+
+void Game::fastTravel(char* roomNumber){
+	saveScreen();
+	
+	move(0, 0);
+	wmove(win, 0, 0);
+	clrtoeol();
+	wclear(win);
+	
+	int roomNum = atoi(roomNumber);
+	bool roomFound = false;
+	
+	for (unsigned int i = 0; i< roomsVisited.size(); i++){
+		if (roomsVisited[i]->getRoomNumber() == roomNum){
+			roomFound = true;
+			currentRoom = roomsVisited[i];
+			wmove(win, 0, 0);
+			wprintw(win, "Moving to Room %d", roomsVisited[i]->getRoomNumber());
+			break;
+		}
+		if (roomFound == false && i == roomsVisited.size() - 1){
+			wmove(win, 0, 0);
+			wprintw(win, "Either you have not been there, or that is not a room name");
+		}
+	}
+	
+	wmove(win, 1, 0);
+	wprintw(win, hitButton);
+	wrefresh(win);
+	getch();
+	previousScreen();
+}
+
+void Game::addToRoomsVisited(Room* room){
+	for (unsigned int i = 0; i < roomsVisited.size(); i++){
+		if (roomsVisited[i] == room){
+			return;
+		}
+	}
+	roomsVisited.push_back(room);
+}
