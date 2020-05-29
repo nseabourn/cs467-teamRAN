@@ -15,6 +15,7 @@ public:
 	
 	void question();
 	bool accuse();
+	void frisk();
 
 	/*Suspect();
 	Suspect(bool m, std::string name_, std::string desc, Room* r, Game* g);

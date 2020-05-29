@@ -67,6 +67,7 @@ public:
 	void drop(char*);
 	void fastTravel(char*);
 	void addToRoomsVisited(Room*);
+	void gameFrisk(char*);
 
 	std::vector<Interactable*> getInteractables();
 	std::vector<Room> getRoomsVector();

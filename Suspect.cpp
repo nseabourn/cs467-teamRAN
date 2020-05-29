@@ -34,6 +34,16 @@ bool Suspect::accuse() {
 	}
 	return true;
 }
+
+void Suspect::frisk(){
+	if (isMurderer){
+		wmove(win, 0, 0);
+		wprintw(win, "After frisking the suspect, you found a knife covered in blood.");
+	} else {
+		wmove(win, 0, 0);
+		wprintw(win, "You did not find anything.");
+	}
+}
 /*
 Suspect::Suspect(bool m, std::string name_, std::string desc, Room* r, Game* g):
 	Interactable{name_, desc, r, g, false}, isMurderer{m}{}

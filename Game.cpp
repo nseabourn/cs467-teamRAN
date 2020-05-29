@@ -903,3 +903,25 @@ void Game::addToRoomsVisited(Room* room){
 	}
 	roomsVisited.push_back(room);
 }
+
+void Game::gameFrisk(char* suspect){
+	saveScreen();
+	
+	move(0, 0);
+	wmove(win, 0, 0);
+	clrtoeol();
+	wclear(win);
+	
+	suspect[0] = toupper(suspect[0]);
+	std::string sus(suspect);
+	int position = currentRoom->getItemsListPosition(sus);
+	if (position != -1) {
+		currentRoom->getItemsList()[position]->frisk();
+	}
+	
+	wmove(win, 1, 0);
+	wprintw(win, hitButton);
+	wrefresh(win);
+	getch();
+	previousScreen();
+}

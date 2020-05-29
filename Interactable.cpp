@@ -54,6 +54,11 @@ void Interactable::question(){
 	wmove(win, 1, 0);
 }
 
+void Interactable::frisk(){
+	wmove(win, 0, 0);
+	wprintw(win, "That object cannot be frisked.");
+}
+
 //----------------Quiz---------------------------
 Interactable* Interactable::solve(){
 	wmove(win, 0, 0);

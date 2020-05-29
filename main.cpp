@@ -199,6 +199,10 @@ int main() {
 			char* location = &(playerInput[16]);
 			game1.fastTravel(location);
 		}
+		else if (strncmp("frisk ", playerInput, 6) == 0){
+			char* suspect = &(playerInput[6]);
+			game1.gameFrisk(suspect);
+		}
 		else if (strncmp("type ", playerInput, 5) == 0) {//just for testing!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 			char* object = &(playerInput[5]);
 			game1.type(object);
