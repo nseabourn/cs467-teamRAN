@@ -11,10 +11,10 @@ private:
 	std::string failString;
 	std::string correctAnswer;
 	bool isCorrect;
+	Interactable* reward;
 public:
-	Quiz();
-	Quiz(std::string, std::string, std::string);
-	virtual bool solve(); 
+	Quiz(std::string, std::string, std::string, Interactable*);
+	virtual Interactable* solve(); 
 
 	/*
 	Quiz();

@@ -13,15 +13,20 @@ south
 room 4
 west
 room 6
-3
+4
 0
 Note from room 7
 description
+
+0
+Key from room 7
+This key was retrieved from the scrambled word quiz
 
 2
 Scrambled word quiz
 Scrambled word quiz description
 answer
+Key from room 7
 
 2
 Scrambled word Chest

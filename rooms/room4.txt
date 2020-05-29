@@ -13,15 +13,20 @@ null
 null
 west
 room 3
-3
+4
 0
 Note from room 4
 description
+
+0
+Key from room 4
+This key was retrieved from the physics quiz
 
 2
 physics quiz
 physics quiz description
 answer
+Key from room 4
 
 2
 physics chest

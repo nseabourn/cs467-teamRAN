@@ -13,15 +13,20 @@ null
 null
 west
 room 2
-3
+4
 0
 Note from room 3
 description
+
+0
+Key from room 3
+This key was retrieved from the chemistry quiz
 
 2
 Chemistry quiz
 Chemistry quiz description
 answer
+Key from room 3
 
 2
 Chemistry Chest
