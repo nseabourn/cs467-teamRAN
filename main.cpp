@@ -161,6 +161,9 @@ int main() {
 		else if (strcmp("help", playerInput) == 0) {
 			game1.displayHelpList();
 		}
+		else if (strcmp("map", playerInput) == 0) {
+			game1.displayMap();
+		}
 		else if (strcmp("inventory", playerInput) == 0) {
 			game1.displayInventory();
 		}

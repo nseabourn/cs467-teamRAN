@@ -527,6 +527,7 @@ void Game::displayHelpList() {
 	wprintw(win, "\n1. look : This repeats the long explanation of the room");
 	wprintw(win, "\n2. look at (object name): This gives an explanation or the object.");
 	wprintw(win, "\n3. go (compass direction or exit description): This allows you to travel\n\tto adjacent rooms.");
+	wprintw(win, "\n3. map : display the map of the rooms.");
 	wprintw(win, "\n4. take (item name): This allows you to put an object in your inventory.");
 	wprintw(win, "\n5. help : This will bring up the available commands during gameplay.");
 	wprintw(win, "\n6. inventory : This will list the contents of your inventory.");
@@ -540,6 +541,49 @@ void Game::displayHelpList() {
 	wprintw(win, "\n14. unlock (chest name): This attempts to unlock the chest.");
 	wprintw(win, "\n15. open (chest name): This attempts to open the chest.");
 	wprintw(win, "\n16. eat (item name) : This allows you to eat an item in your inventory.");
+	wrefresh(win);
+
+	move(0, 0);
+	printw("Press any key to return to previous screen.");
+	refresh();
+	getch();
+
+	previousScreen();
+	wrefresh(win);
+	wrefresh(borderWindow);
+	refresh();
+}
+
+void Game::displayMap() {
+	saveScreen();
+
+
+	//list of available commands
+	wmove(win, 0, 0);
+	wprintw(win, "Here is map of the game:");
+	wprintw(win, "\n                                     --------");
+	wprintw(win, "\n                                    |   13   |");
+	wprintw(win, "\n                                     --------");
+	wprintw(win, "\n                                         |");
+	wprintw(win, "\n                         --------    --------    --------    --------");
+	wprintw(win, "\n                        |   11   |--|   12   |--|   13   |--|   15   |");
+	wprintw(win, "\n                         --------    --------    --------    --------");
+	wprintw(win, "\n                            |");
+	wprintw(win, "\n -------    -------    -------- ");
+	wprintw(win, "\n|   8   |--|   9   |--|   10   |");
+	wprintw(win, "\n -------    -------    -------- ");
+	wprintw(win, "\n    |          |           |");
+	wprintw(win, "\n -------    -------    -------- ");
+	wprintw(win, "\n|   5   |--|   6   |--|    7   |");
+	wprintw(win, "\n -------    -------    -------- ");
+	wprintw(win, "\n    |          |           |");
+	wprintw(win, "\n -------    -------    -------- ");
+	wprintw(win, "\n|   2   |--|   3   |--|    4   |");
+	wprintw(win, "\n -------    -------    -------- ");
+	wprintw(win, "\n    |");
+	wprintw(win, "\n -------");
+	wprintw(win, "\n|   1   |");
+	wprintw(win, "\n -------");
 	wrefresh(win);
 
 	move(0, 0);

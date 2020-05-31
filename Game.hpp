@@ -57,6 +57,7 @@ public:
 	void travelTo(char*);
 	void gameTake(char*);
 	void displayHelpList();
+	void displayMap();
 	void displayInventory();
 	void saveGame();
 
