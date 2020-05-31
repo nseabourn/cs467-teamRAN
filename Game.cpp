@@ -562,7 +562,7 @@ void Game::displayMap() {
 	wmove(win, 0, 0);
 	wprintw(win, "Here is map of the game:");
 	wprintw(win, "\n                                       --------");
-	wprintw(win, "\n                                      |   13   |");
+	wprintw(win, "\n                                      |   14   |");
 	wprintw(win, "\n                                       --------");
 	wprintw(win, "\n                                           |");
 	wprintw(win, "\n                           --------    --------    --------    --------");
