@@ -3,8 +3,8 @@
 4
 -1
 2
-This is Room 3's long description.
-This is Room 3's short description.
+To the north is the entrance to Room 6.\nTo the east is the entrance to Room 4.\n
+Room 3 is a Chemistry room! \n \nHint: Use "look" command to see the list of objects in the room..
 north
 room 6
 east
@@ -16,7 +16,7 @@ room 2
 4
 0
 Note from room 3
-description
+Murderer hates the color pink!
 
 0
 Key from room 3
@@ -24,13 +24,13 @@ This key was retrieved from the chemistry quiz
 
 3
 Chemistry chest
-Chemistry chest description
+Chemistry chest containts a clue to find the murderer!
 Key from room 3
 1
 Note from room 3
 
 2
 Chemistry quiz
-Chemistry quiz description
-Answer
+What is the first element on the periodic table?
+Hydrogen
 Key from room 3

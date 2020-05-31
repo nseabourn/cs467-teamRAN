@@ -3,8 +3,8 @@
 3
 1
 -1
-To the north is the entrance to Room 5.\nTo the east is the entrance to Room 3.\nTo the south is the entrance to Room 1.
-This is Room 2's short description.
+To the north is the entrance to Room 5.\nTo the east is the entrance to Room 3.\nTo the south is the entrance to Room 1.\n
+Room 2 is a math room! \n \nHint: Use "look" command to see the list of objects in the room..
 north
 room 5
 east
@@ -16,7 +16,7 @@ null
 4
 0
 Note from room 2
-The number 11 is written on it.
+Murderer was born prior to 1998!
 
 0
 Key from room 2
@@ -24,13 +24,13 @@ This key was retrieved from the math quiz
 
 3
 Math chest
-Math chest description
+Math chest containts a clue to find the murderer!
 Key from room 2
 1
 Note from room 2
 
 2
 Math quiz
-What does the 'A' stand for in PEMDAS?
+What does the 'A' stand for in PEMDAS?\n
 Addition
 Key from room 2
