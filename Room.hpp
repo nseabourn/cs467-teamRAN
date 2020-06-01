@@ -24,6 +24,7 @@ private:
 	char* shortDescription;
 	std::vector<std::string> travelCommands;
 	bool visitedBefore;
+	bool naturallyDark;
 	std::vector<Interactable*> items;
 
 	int numberItems;
@@ -53,6 +54,9 @@ public:
 	std::vector<Interactable*> getItemsList();
 	int getNumberItems();
 	void freeRoom();
+	void setDarkness(bool);
+	bool containsCandle();
+	
 
 	void printLongDescription();
 	void printDescription();

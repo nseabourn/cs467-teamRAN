@@ -3,6 +3,7 @@
 9
 5
 -1
+0
 To the east, is the entrance to Room 9.\nTo the south, is the enterance to Room 5.
 This room looks like to be a library, filled with books.
 null

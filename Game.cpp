@@ -58,6 +58,7 @@ void Game::createRooms() {
 	std::string inputLine;
 	std::string pathName;
 	int roomNumber, up, right, down, left, numberInteractables, interactableType;
+	bool darkness;
 
 	for (int i = 0; i < 15; i++) {
 		rooms.push_back(Room());
@@ -70,7 +71,7 @@ void Game::createRooms() {
 	for (int i = 1; i < 16; i++) {
 		pathName = "rooms/room" + std::to_string(i) + ".txt";
 		inFile.open(pathName);
-		inFile >> roomNumber >> up >> right >> down >> left;
+		inFile >> roomNumber >> up >> right >> down >> left >> darkness;
 		
 		
 		//decrementing numbers to account for zero indexing
@@ -80,6 +81,9 @@ void Game::createRooms() {
 		right--;
 		down--;
 		left--;
+		
+		//sets darkness
+		rooms[roomNumber].setDarkness(darkness);
 
 		//reads in long description
 		//extra getline is needed to prevent reading the trailing '\n' at end of line for left room
@@ -474,8 +478,12 @@ void Game::travelTo(char* destination){
 		default:
 			move(0, 0);
 			printw("Invalid location.");
+			move(1, 0);
+			printw(hitButton);
 			refresh();
-			usleep(1000000);
+			getch();
+			move(1, 0);
+			clrtoeol();
 			break;
 	}
 	

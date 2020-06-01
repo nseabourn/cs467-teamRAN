@@ -40,12 +40,12 @@ int main() {
 	start_x = (width - newWidth) / 2;
 
 	//will display message if screen needs to be bigger
-	if (height < newHeight + 4 || width < newWidth + 4) {
+	if (height < newHeight + 6 || width < newWidth + 4) {
 		move(0, 0);
-		if (height < newHeight + 4 && width < newWidth + 4) {
+		if (height < newHeight + 6 && width < newWidth + 4) {
 			printw(makeWiderAndTaller);
 		}
-		else if (height < newHeight + 4) {
+		else if (height < newHeight + 6) {
 			printw(makeTaller);
 		}
 		else if (width < newWidth + 4) {
