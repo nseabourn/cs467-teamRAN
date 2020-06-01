@@ -3,6 +3,7 @@
 7
 3
 5
+0
 This is Room 6's long description.
 This is Room 6's short description.
 north

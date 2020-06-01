@@ -3,6 +3,7 @@
 4
 -1
 2
+0
 To the north is the entrance to Room 6.\nTo the east is the entrance to Room 4.\n
 Room 3 is a Chemistry room! \n \nHint: Use "look" command to see the list of objects in the room..
 north
