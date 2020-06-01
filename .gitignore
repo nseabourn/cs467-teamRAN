@@ -1,2 +1,5 @@
 
 *.o
+borderWindow.txt
+stdscrWindow.txt
+subwindow.txt
