@@ -13,7 +13,10 @@ south
 room 3
 west
 room 5
+1
 0
+Candle
+This looks like it could help somebody see in a dark room.
 5
 fire extinguisher
 It's a fire extinguisher.
