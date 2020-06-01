@@ -12,25 +12,7 @@ const char* hitButton = "Please enter any button to continue.";
 const int newWidth = 75;
 
 
-int main() {
-	/*Game game1;
-	game1.createRooms();
-	game1.setCurrentRoom(game1.getCurrentRoom()->getNorthRoom());
-	std::cout << "Room " << game1.getCurrentRoom()->getRoomNumber() << std::endl;
-	for (unsigned int i = 0; i < game1.getCurrentRoom()->getItemsList().size(); i++) {
-		std::cout << game1.getCurrentRoom()->getItemsList()[i]->getName() << std::endl;
-	}
-	//std::cout << game1.getCurrentRoom()->getDescription() << std::endl;
-
-	for (unsigned int i = 0; i < game1.getInteractables().size(); i++) {
-		std::cout << game1.getInteractables()[i]->getDescription() << std::endl;
-	}*/
-	//for (unsigned int i = 0; i < game1.getCurrentRoom()->getItemsList().size(); i++){
-		//std::cout << game1.getCurrentRoom()->getItemsList()[i]->getName() << std::endl;
-	//}
-
-
-	
+int main() {	
 	//below is formatting code to be uncommented later
 	//include initializing screen, making sure screen is big enough, creating a new screen, and displaying the main menu
 	const char* makeTaller = "Please make your console screen taller and try again.";
@@ -121,6 +103,25 @@ int main() {
 		break;
 	}
 
+	
+	//write to temp file all commands user enters. Will use to save game
+	std::string tempSaveFile = "saveFiles/.temp" + std::to_string(getpid());
+	std::ofstream fout;
+	fout.open(tempSaveFile, std::ios_base::app);
+	if(!fout){
+		//frees memory used by created subwindows
+		delwin(win);
+		delwin(borderWindow);
+		
+		//deallocates memory and ends ncurses
+		endwin();
+		game1.freeGame();
+		
+		std::cout << "Unable to open file for save." << std::endl;
+
+		exit(1);
+	}
+
 
 	//runs until game is over
 	while (game1.getGameOverStatus() == false) {
@@ -133,7 +134,21 @@ int main() {
 		for (unsigned int i = 0; i < strlen(playerInput); i++) {
 			playerInput[i] = tolower(playerInput[i]);
 		}
-		if (strcmp("look", playerInput) == 0) {
+
+		//-----------input that doesn't needs saving---------
+		if (strcmp("quitgame", playerInput) == 0) {
+			game1.setGameOverStatus(true);
+			break;
+		}
+		else if (strcmp("savegame", playerInput) == 0) {
+			game1.saveGame();
+			continue;
+		}
+		else if (strcmp("help", playerInput) == 0) {
+			game1.displayHelpList();
+			continue;
+		}
+		else if (strcmp("look", playerInput) == 0) {
 			game1.saveScreen();
 			wclear(win);
 			game1.getCurrentRoom()->printLongDescription();
@@ -142,11 +157,30 @@ int main() {
 			refresh();
 			getch();
 			game1.previousScreen();
+			continue;
 		}
 		else if (strncmp("look at ", playerInput, 8) == 0) {
 			char* object = &(playerInput[8]);
 			game1.lookAt(object);
+			continue;
 		}
+		else if (strcmp("map", playerInput) == 0) {
+			game1.displayMap();
+			continue;
+		}
+		else if (strcmp("inventory", playerInput) == 0) {
+			game1.displayInventory();
+			continue;
+		}
+		else if (strncmp("question ", playerInput, 9) == 0) {
+			char* object = &(playerInput[9]);
+			game1.question(object);
+			continue;
+		}
+		//---------------------------------------------------
+
+
+		//---------------input that needs saving-------------
 		else if (strncmp("go ", playerInput, 2) == 0) {
 			char* destination = &(playerInput[3]);
 			game1.travelTo(destination);
@@ -158,29 +192,9 @@ int main() {
 			char* object = &(playerInput[5]);
 			game1.gameTake(object);
 		}
-		else if (strcmp("help", playerInput) == 0) {
-			game1.displayHelpList();
-		}
-		else if (strcmp("map", playerInput) == 0) {
-			game1.displayMap();
-		}
-		else if (strcmp("inventory", playerInput) == 0) {
-			game1.displayInventory();
-		}
-		else if (strcmp("savegame", playerInput) == 0) {
-			game1.saveGame();
-			break;
-		}
-		else if (strcmp("quitgame", playerInput) == 0) {
-			game1.setGameOverStatus(true);
-		}
 		else if (strncmp("accuse ", playerInput, 7) == 0) {
 			char* object = &(playerInput[7]);
 			game1.gameAccuse(object);
-		}
-		else if (strncmp("question ", playerInput, 9) == 0) {
-			char* object = &(playerInput[9]);
-			game1.question(object);
 		}
 		else if (strncmp("open ", playerInput, 5) == 0) {
 			char* object = &(playerInput[5]);
@@ -210,10 +224,9 @@ int main() {
 			char* object = &(playerInput[4]);
 			game1.gameEat(object);
 		}
-		else if (strncmp("type ", playerInput, 5) == 0) {//just for testing!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-			char* object = &(playerInput[5]);
-			game1.type(object);
-		}
+		//---------------------------------------------------
+
+
 		else {
 			move(0, 0);
 			printw("Invalid command. Please try again.");
@@ -223,9 +236,17 @@ int main() {
 			getch();
 			move(1, 0);
 			clrtoeol();
+			continue;
 		}
 
+
+		//save user's input
+		fout << playerInput << std::endl;
 	}
+
+
+	fout.close();
+	remove(tempSaveFile.c_str());
 
 	
 	//frees memory used by created subwindows
