@@ -60,7 +60,7 @@ void Interactable::frisk(){
 }
 
 //----------------Quiz---------------------------
-Interactable* Interactable::solve(){
+Interactable* Interactable::solve(char* ans){
 	wmove(win, 0, 0);
 	wprintw(win, "This is not a solvable object.");
 	return nullptr;

@@ -105,9 +105,9 @@ int main() {
 
 	
 	//write to temp file all commands user enters. Will use to save game
-	std::string tempSaveFile = "saveFiles/.temp" + std::to_string(getpid());
+	std::string tempSaveFileName = "saveFiles/.temp" + std::to_string(getpid());
 	std::ofstream fout;
-	fout.open(tempSaveFile, std::ios_base::app);
+	fout.open(tempSaveFileName);
 	if(!fout){
 		//frees memory used by created subwindows
 		delwin(win);
@@ -121,6 +121,9 @@ int main() {
 
 		exit(1);
 	}
+	//get past menu in save file
+	for(int i=0; i<2; i++)
+		fout << std::endl;
 
 
 	//runs until game is over
@@ -180,8 +183,11 @@ int main() {
 		//---------------------------------------------------
 
 
+		//save user's input
+		fout << playerInput << std::endl;
+
 		//---------------input that needs saving-------------
-		else if (strncmp("go ", playerInput, 2) == 0) {
+		if (strncmp("go ", playerInput, 2) == 0) {
 			char* destination = &(playerInput[3]);
 			game1.travelTo(destination);
 		}
@@ -238,15 +244,11 @@ int main() {
 			clrtoeol();
 			continue;
 		}
-
-
-		//save user's input
-		fout << playerInput << std::endl;
 	}
 
 
 	fout.close();
-	remove(tempSaveFile.c_str());
+	remove(tempSaveFileName.c_str());
 
 	
 	//frees memory used by created subwindows

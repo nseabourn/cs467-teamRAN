@@ -36,7 +36,7 @@ public:
 	virtual bool getIsLocked();
 	virtual void empty();
 	virtual void addItem(Interactable*);
-	virtual Interactable* solve(); 
+	virtual Interactable* solve(char*); 
 	bool take();
 	virtual void frisk();
 	virtual std::vector<Interactable*> getItemsList();

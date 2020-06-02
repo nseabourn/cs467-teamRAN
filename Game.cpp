@@ -543,7 +543,7 @@ void Game::displayHelpList() {
 	wprintw(win, "\n8. quitgame : This allows the player to quit at any time.");
 	wprintw(win, "\n9. accuse (suspect name): This allows you to accuse a suspect. Game is\n\tover after accusation.");
 	wprintw(win, "\n10. question (suspect name): This allows you to question a suspect.");
-	wprintw(win, "\n11. solve (quiz name): This allows you to solve a quiz.");
+	wprintw(win, "\n11. solve (quiz name) (answer): This allows you to solve a quiz.");
 	wprintw(win, "\n12. drop (item): This allows you to drop an item in your inventory.");
 	wprintw(win, "\n13. fasttravel room (number): This allows you to quickly go to a\n\tpreviously visited room");
 	wprintw(win, "\n14. unlock (chest name): This attempts to unlock the chest.");
@@ -696,20 +696,38 @@ void Game::solve(char* object){
 	move(0, 0);
 	clrtoeol();
 	wclear(win);
+
+	//separate answer from object
+	char* answer = object + strlen(object)-1;
+	while(answer[0] != ' ')
+		answer--;
+	answer[0] = '\0';
+	answer++;
+
 	object[0] = toupper(object[0]);
 	std::string obj(object);
 	int position = currentRoom->getItemsListPosition(obj);
 	if (position != -1 && currentRoom->getItemsList()[position]->getType() == 2) {
 		//if solving quiz comes back with a reward, will remove quiz from room and add reward
-		Interactable* reward = currentRoom->getItemsList()[position]->solve();
+		Interactable* reward = currentRoom->getItemsList()[position]->solve(answer);
 		if (reward != nullptr){
 			currentRoom->removeInteractable(currentRoom->getItemsList()[position]);
 			currentRoom->addInteractable(reward);
 			wclear(win);
 			wmove(win, 0, 0);
+			wprintw(win, "Congratulations, that is the correct answer.");
+			wmove(win, 1, 0);
 			wprintw(win, reward->getName());
-			wmove(win, 0, strlen(reward->getName()));
+			wmove(win, 1, strlen(reward->getName()));
 			wprintw(win, "was added to the room.");
+			wmove(win, 2, 0);
+			wprintw(win, hitButton);
+			wrefresh(win);
+		}
+		else{			
+			wclear(win);
+			wmove(win, 0, 0);
+			wprintw(win, "Sorry, that is not the correct answer.");
 			wmove(win, 1, 0);
 			wprintw(win, hitButton);
 			wrefresh(win);
