@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string.h>
 #include <unistd.h>
+#include <sys/stat.h>
 #include "common.hpp"
 #include "Game.hpp"
 
@@ -83,24 +84,74 @@ int main() {
 	refresh();
 	switch (menuChoice) {
 	
-	//option for starting new game
-	case 0:
-		game1.displayGameInfo();
-		game1.createRooms();
-		break;
+		//option for starting new game
+		case 0:
+			game1.displayGameInfo();
+			game1.createRooms();
+			break;
 
-	//option for loading game
-	case 1:
-		game1.loadGame();
-		break;
+		//option for loading game
+		case 1:{
+			move(0, 0);
+			clrtoeol();
+			wclear(win);
+			wmove(win, 0, 0);
+			wprintw(win, "Enter your save file");
+			wmove(win, 1, 0);
+			wrefresh(win);
+			move(0, 0);
 
-	//option for quitting game
-	case 2:
-		delwin(win);
-		delwin(borderWindow);
-		endwin();
-		return 0;
-		break;
+			getstr(playerInput);
+			std::string loadName = std::string("saveFiles/") + std::string(playerInput);
+			struct stat st;
+			while( !isalpha(playerInput[0]) || stat(loadName.c_str(), &st) != 0 ){
+				game1.saveScreen();
+				move(0, 0);
+				clrtoeol();
+				wclear(win);
+				wmove(win, 0, 0);
+				wprintw(win, "Save file does not exist, try again");
+				wmove(win, 1, 0);
+				wprintw(win, hitButton);
+				wrefresh(win);
+				getch();
+				game1.previousScreen();
+
+				getstr(playerInput);			
+				loadName = "saveFiles/" + std::string(playerInput); 
+			}
+			
+			move(0, 0);
+			clrtoeol();
+			wclear(win);
+			wmove(win, 0, 0);
+			wprintw(win, "Loaded game");
+			wmove(win, 1, 0);
+			wprintw(win, hitButton);
+			wrefresh(win);
+			getch();
+
+			//need to actually load the game!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			//need to actually load the game!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			//need to actually load the game!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			//need to actually load the game!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			//need to actually load the game!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+			delwin(win);
+			delwin(borderWindow);
+			endwin();
+			return 0;
+			break;
+		}
+
+		//option for quitting game
+		case 2:
+			delwin(win);
+			delwin(borderWindow);
+			endwin();
+			return 0;
+			break;
 	}
 
 	
@@ -145,7 +196,7 @@ int main() {
 			game1.setGameOverStatus(true);
 			break;
 		}
-		else if (strncmp("savegame ", playerInput, 9) == 0 && playerInput[9] != '.') {
+		else if ( strncmp("savegame ", playerInput, 9) == 0 && isalpha(playerInput[9]) ) {
 			game1.saveScreen();
 			move(0, 0);
 			clrtoeol();
