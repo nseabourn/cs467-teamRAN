@@ -453,9 +453,15 @@ void Game::lookAt(char* object) {
 }
 
 void Game::travelTo(char* destination){
+	saveScreen();
+	move(0, 0);
+	clrtoeol();
+	wclear(win);
+	wmove(win, 0, 0);
 	
 	std::string dest(destination);
 	int travelNumber = currentRoom->getTravelVectorPosition(dest);
+	bool traveled = true;
 	
 	//will set current room based on travelNumber
 	switch (travelNumber) {
@@ -476,17 +482,20 @@ void Game::travelTo(char* destination){
 			currentRoom = currentRoom->getWestRoom();
 			break;
 		default:
-			move(0, 0);
-			printw("Invalid location.");
-			move(1, 0);
-			printw(hitButton);
-			refresh();
-			getch();
-			move(1, 0);
-			clrtoeol();
+			traveled = false;
 			break;
 	}
 	
+	if(traveled)
+		wprintw(win, "Traveled to Room %d", currentRoom->getRoomNumber());
+	else
+		wprintw(win, "Invalid location");
+
+	wmove(win, 1, 0);
+	wprintw(win, hitButton);
+	wrefresh(win);
+	getch();
+	previousScreen();	
 }
 
 void Game::gameTake(char* object) {
