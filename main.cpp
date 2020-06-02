@@ -107,7 +107,7 @@ int main() {
 	//write to temp file all commands user enters. Will use to save game
 	std::string tempSaveFileName = "saveFiles/.temp" + std::to_string(getpid());
 	std::ofstream fout;
-	fout.open(tempSaveFileName);
+	fout.open(tempSaveFileName, std::fstream::out | std::fstream::trunc);
 	if(!fout){
 		//frees memory used by created subwindows
 		delwin(win);
@@ -117,7 +117,7 @@ int main() {
 		endwin();
 		game1.freeGame();
 		
-		std::cout << "Unable to open file for save." << std::endl;
+		std::cerr << "Unable to open file for save." << std::endl;
 
 		exit(1);
 	}
@@ -143,8 +143,51 @@ int main() {
 			game1.setGameOverStatus(true);
 			break;
 		}
-		else if (strcmp("savegame", playerInput) == 0) {
-			game1.saveGame();
+		else if (strncmp("savegame ", playerInput, 9) == 0 && playerInput[9] != '.') {
+			game1.saveScreen();
+			move(0, 0);
+			clrtoeol();
+			wclear(win);
+			wmove(win, 0, 0);
+
+			fout.close();
+			std::string saveFileName = "saveFiles/" + std::string(&(playerInput[9]));
+			fout.open(saveFileName, std::fstream::out | std::fstream::trunc | std::fstream::binary);
+			std::ifstream fin;
+			fin.open(tempSaveFileName, std::fstream::in | std::fstream::binary);
+			if(!fout || !fin){
+				wprintw(win, "Failed to save");
+				wmove(win, 1, 0);
+			}
+			else{
+				fout << fin.rdbuf();
+				wprintw(win, "Saved successfully");
+				wmove(win, 1, 0);
+			}
+			
+			wprintw(win, hitButton);
+			wrefresh(win);
+			getch();
+			game1.previousScreen();
+
+			fin.close();
+			fout.close();
+
+			//go back to temp save file
+			fout.open(tempSaveFileName, std::fstream::out | std::fstream::app);
+			if(!fout){
+				//frees memory used by created subwindows
+				delwin(win);
+				delwin(borderWindow);
+				
+				//deallocates memory and ends ncurses
+				endwin();
+				game1.freeGame();
+				
+				std::cerr << "Unable to open file for temp save." << std::endl;
+
+				exit(1);
+			}
 			continue;
 		}
 		else if (strcmp("help", playerInput) == 0) {
@@ -248,7 +291,8 @@ int main() {
 
 
 	fout.close();
-	remove(tempSaveFileName.c_str());
+	if(std::remove(tempSaveFileName.c_str()) != 0)
+		std::cerr << "Unable to delete temporary save file" << std::endl;
 
 	
 	//frees memory used by created subwindows
@@ -265,9 +309,3 @@ int main() {
 
 	return 0;
 }
-
-
-
-
-
-
