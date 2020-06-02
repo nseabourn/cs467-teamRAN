@@ -3,8 +3,8 @@
 3
 1
 -1
-To the north is the entrance to Room 5.\nTo the east is the entrance to Room 3.\nTo the south is the entrance to Room 1.\n
-Room 2 is a math room! \n \nHint: Use "look" command to see the list of objects in the room..
+This Room is filled with mathematical equations on the wall.\nA mathematician must have left these objects:\n
+Adjacent Rooms:\nTo the north is the entrance to Room 5.\nTo the east is the entrance to Room 3.\nTo the south is the entrance to Room 1.\n\n> It looks like an abandoned Math classroom!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint: Use "look" command to see the list of objects in the room..
 north
 room 5
 east

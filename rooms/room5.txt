@@ -3,8 +3,8 @@
 6
 2
 -1
-This is Room 5's long description.
-This is Room 5's short description.
+This Room is so dark you cannot see anything!\n
+Adjacent Rooms:\nTo the north is door to Room 8. To the east is the door to Room 6. To the south is door to room 2\n\n> This room is so dark!!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint: Use "look" command to see the list of objects in the room..
 north
 room 8
 east
