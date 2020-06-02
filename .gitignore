@@ -5,3 +5,4 @@ stdscrWindow.txt
 subwindow.txt
 main
 saveFiles/*
+!saveFiles/dummyFile.txt
