@@ -25,7 +25,7 @@ This key was retrieved from the chemistry quiz
 
 3
 Chemistry chest
-Chemistry chest containts a clue to find the murderer!
+Contains a clue to find the murderer!
 Key from room 3
 1
 Note from room 3

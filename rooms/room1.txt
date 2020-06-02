@@ -29,7 +29,7 @@ Sofia
 
 1
 Lucas
-> Suspect's name is Lucas.\n> He is 22 years old\n> Suspect is wearing white hat and green shoes and blue shirt.
+> Suspect's name is Lucas.\n> He is 22 years old\n> Suspect is wearing white hat and green leather shoes and blue shirt.
 0
 "Lucas answer"
 
@@ -47,7 +47,7 @@ Chris
 
 1
 Jack
-> Suspect's name is Jack.\n> He is 45 years old\n> Suspect is wearing black shoes and blue shirt.\n> Suspect has brown gloves on.\n> Suspect is also wearing glasses.\n> Suspect is wearing a jacket as well.
+> Suspect's name is Jack.\n> He is 45 years old\n> Suspect is wearing black shoes and blue shirt.\n> Suspect has orange gloves on.\n> Suspect is also wearing glasses.\n> Suspect is wearing a jacket as well.
 0
 "Jack answer"
 

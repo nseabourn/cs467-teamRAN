@@ -4,8 +4,8 @@
 12
 -1
 0
-This is Room 13's long description.
-This is Room 13's short description.
+It appears someone else was just in this room and left in a hurry.\nLots of stuff are all over the place, as if this was going to\nbe a place to hide something important: \n
+Adjacent Rooms:\nTo the south is the entrance to Room 12.\n\n> Someone else was in this room recently...\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint: Use "look" command to see the list of objects in the room.
 null
 null
 null
@@ -14,4 +14,16 @@ south
 room 12
 null
 null
+3
+
 0
+Mug
+Its empty
+
+0
+Knife
+It has blood stains
+
+0
+Gloves
+"Suspect must have taken off his/her red pair of gloves!"\n
