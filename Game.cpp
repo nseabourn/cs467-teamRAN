@@ -1020,10 +1020,16 @@ void Game::gameEat(char* object){
 	}
 	if (inventoryPosition != -1){
 		Interactable* itemToBeEaten = inventory[inventoryPosition];
-		itemToBeEaten->eat();
-		inventory.erase(inventory.begin() + inventoryPosition);
-	} else {
-		wmove(win, 0, 0);
+		//check that the item is food
+		if(itemToBeEaten->getType() == 7){
+			inventory.erase(inventory.begin() + inventoryPosition);
+			wprintw(win, "You just ate the %s", object);
+		}
+		else{
+			wprintw(win, "You cannot eat the %s", object);
+		}
+	}
+	else {
 		wprintw(win, "That item is not in your inventory");
 	}
 	

@@ -92,11 +92,6 @@ bool Interactable::take(){
 	}
 }
 
-void Interactable::eat(){
-	wmove(win, 0, 0);
-	wprintw(win, "You cannot eat that object.");
-}
-
 std::vector<Interactable*> Interactable::getItemsList(){
 	return std::vector<Interactable*>();
 }

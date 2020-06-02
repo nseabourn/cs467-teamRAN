@@ -138,7 +138,9 @@ int main() {
 			playerInput[i] = tolower(playerInput[i]);
 		}
 
+		//---------------------------------------------------
 		//-----------input that doesn't needs saving---------
+		//---------------------------------------------------
 		if (strcmp("quitgame", playerInput) == 0) {
 			game1.setGameOverStatus(true);
 			break;
@@ -224,12 +226,17 @@ int main() {
 			continue;
 		}
 		//---------------------------------------------------
+		//---------------------------------------------------
+		//---------------------------------------------------
 
 
 		//save user's input
-		fout << playerInput << std::endl;
+		fout << playerInput << std::endl << std::endl;
 
+
+		//---------------------------------------------------
 		//---------------input that needs saving-------------
+		//---------------------------------------------------
 		if (strncmp("go ", playerInput, 2) == 0) {
 			char* destination = &(playerInput[3]);
 			game1.travelTo(destination);
@@ -273,6 +280,8 @@ int main() {
 			char* object = &(playerInput[4]);
 			game1.gameEat(object);
 		}
+		//---------------------------------------------------
+		//---------------------------------------------------
 		//---------------------------------------------------
 
 

@@ -40,7 +40,6 @@ public:
 	bool take();
 	virtual void frisk();
 	virtual std::vector<Interactable*> getItemsList();
-	virtual void eat();
 	/*Interactable(std::string name_, std::string desc, Room* r, bool h);
 	void setName(std::string name_);
 	void setShortDesc(std::string desc);
