@@ -4,8 +4,8 @@
 2
 -1
 1
-This is Room 5's long description.
-This is Room 5's short description.
+This Room is still very dark,\nWith the light of your candle, you can barely see some objects:\n
+Adjacent Rooms:\nTo the north is the entrance to Room 8.\nTo the east is the entrance to Room 6.\nTo the south is the entrance to Room 2.\n\n> With the light of your candle, you can see some objects!!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint: Use "look" command to see the list of objects in the room..
 north
 room 8
 east
@@ -14,13 +14,11 @@ south
 room 2
 null
 null
-1
+2
 7
 Apple
-A bright red apple.
+A bright red apple, looks delicious!
 0
-notepad
-Written on the notepad is "24-11"
-4
-darkness
-The room is nothing but darkenss, you can only go back the way you came.
+Note on the wall
+"An apple a day, keep the murderer away!"\n
+

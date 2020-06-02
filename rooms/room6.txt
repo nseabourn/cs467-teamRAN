@@ -4,8 +4,8 @@
 3
 5
 0
-This is Room 6's long description.
-This is Room 6's short description.
+This Room is very messy and filled with trash!\n Could anything in here be useful at all?.
+Adjacent Rooms:\nTo the north is the entrance to Room 9.\nTo the east is the entrance to Room 7.\nTo the south is the entrance to Room 3.\nTo the west is the entrance to Room 5.\n\n> Messy Room, smells aweful!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint: Use "look" command to see the list of objects in the room..
 north
 room 9
 east
@@ -14,18 +14,17 @@ south
 room 3
 west
 room 5
-1
+3
 0
 Candle
 This looks like it could help somebody see in a dark room.
-5
-fire extinguisher
-It's a fire extinguisher.
+0
+Trash
+Ewwwwww.
 
-3
-fridge
-Just a normal fridge.
-meat
+7
+Modldy Tomato
+Yuck!!!
 
 6
 kitchen

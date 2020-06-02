@@ -5,7 +5,7 @@
 2
 0
 This Room is filled with bubbling flasks, tubes and lab equipments.\nA chemist must have left these objects:\n
-Adjacent Rooms:\nTo the north is the entrance to Room 6.\nTo the east is the entrance to Room 4.\n\n> It looks like an abandoned Chemistry classroom!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint: Use "look" command to see the list of objects in the room..
+Adjacent Rooms:\nTo the north is the entrance to Room 6.\nTo the east is the entrance to Room 4.\nTo the west is the entrance to Room 2.\n\n> It looks like an abandoned Chemistry classroom!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint: Use "look" command to see the list of objects in the room..
 north
 room 6
 east
