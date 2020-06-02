@@ -3,6 +3,7 @@
 -1
 -1
 3
+0
 This Room is filled with pullies, scales, gyroscppes and lab equipments.\nA physicist must have left these objects:\n
 Adjacent Rooms:\nTo the north is door to Room 7. To the west is the door to Room 3.\n\n> It looks like an abandoned Physics classroom!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint: Use "look" command to see the list of objects in the room..
 north

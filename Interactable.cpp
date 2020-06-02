@@ -60,7 +60,7 @@ void Interactable::frisk(){
 }
 
 //----------------Quiz---------------------------
-Interactable* Interactable::solve(){
+Interactable* Interactable::solve(char* ans){
 	wmove(win, 0, 0);
 	wprintw(win, "This is not a solvable object.");
 	return nullptr;
@@ -90,11 +90,6 @@ bool Interactable::take(){
 	else {
 		return false;
 	}
-}
-
-void Interactable::eat(){
-	wmove(win, 0, 0);
-	wprintw(win, "You cannot eat that object.");
 }
 
 std::vector<Interactable*> Interactable::getItemsList(){

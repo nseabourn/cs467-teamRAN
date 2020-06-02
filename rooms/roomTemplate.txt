@@ -3,6 +3,7 @@ Room to the top
 Room to the right
 Room to the bottom
 Room to the left
+If room is naturally dark
 Long description
 Short description
 Either north or null

@@ -3,6 +3,7 @@
 -1
 -1
 -1
+0
 This Room has six suspects, one of them is the murderer! \nYour job is to guess the correct suspect out of the group:\n
 Adjacent Rooms:\nTo the north, is the entrance to Room 2.\n\n> There are six suspects standing in this Room!\n \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint: Use "look" command to see the list of suspects.
 north

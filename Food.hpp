@@ -11,9 +11,6 @@ private:
 public:
 	Food();
 	Food(std::string, std::string);
-	void eat();
-	
-	
 };
 
 #endif

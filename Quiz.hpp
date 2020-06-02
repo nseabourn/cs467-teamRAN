@@ -14,7 +14,7 @@ private:
 	Interactable* reward;
 public:
 	Quiz(std::string, std::string, std::string, Interactable*);
-	virtual Interactable* solve(); 
+	virtual Interactable* solve(char*); 
 
 	/*
 	Quiz();
