@@ -539,7 +539,7 @@ void Game::displayHelpList() {
 	wprintw(win, "\n4. take (item name): This allows you to put an object in your inventory.");
 	wprintw(win, "\n5. help : This will bring up the available commands during gameplay.");
 	wprintw(win, "\n6. inventory : This will list the contents of your inventory.");
-	wprintw(win, "\n7. savegame : This will allow you to save your game.");
+	wprintw(win, "\n7. savegame (save name): This will allow you to save your game.");
 	wprintw(win, "\n8. quitgame : This allows the player to quit at any time.");
 	wprintw(win, "\n9. accuse (suspect name): This allows you to accuse a suspect. Game is\n\tover after accusation.");
 	wprintw(win, "\n10. question (suspect name): This allows you to question a suspect.");
