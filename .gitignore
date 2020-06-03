@@ -1,4 +1,5 @@
 .vscode
+.nfs*
 *.o
 borderWindow.txt
 stdscrWindow.txt
