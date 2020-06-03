@@ -157,6 +157,7 @@ void Room::printLongDescription(){
 		row++;
 		wmove(win, row, 0);
 		wprintw(win, "This room is too dark to see anything.");
+		row++;
 	} else {
 		move(0, 0);
 		clrtoeol();
@@ -171,13 +172,13 @@ void Room::printLongDescription(){
 				row++;
 			}
 		}
-		row++;
 		for (unsigned int i = 0; i < items.size(); i++) {
 			wmove(win, row, 0);
 			wprintw(win, "\t%s", items[i]->getName());
 			row++;
 		}
 	}
+	wmove(win, row, 0);
 	wrefresh(win);
 }
 

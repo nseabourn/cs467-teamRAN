@@ -22,6 +22,7 @@ int main() {
 	const char* menuInstructions = "Please use the arrow keys to move up/down. Hit enter to select option.";
 	char playerInput[100];
 	int menuChoice;
+	std::ifstream fload;
 	
 	
 
@@ -82,43 +83,46 @@ int main() {
 	move(0, 0);
 	clrtoeol();
 	refresh();
+	bool isLoading = false;
 	switch (menuChoice) {
 	
 		//option for starting new game
 		case 0:
-			game1.displayGameInfo();
-			game1.createRooms();
 			break;
 
 		//option for loading game
 		case 1:{
+			isLoading = true;
 			move(0, 0);
 			clrtoeol();
 			wclear(win);
 			wmove(win, 0, 0);
 			wprintw(win, "Enter your save file");
-			wmove(win, 1, 0);
 			wrefresh(win);
 			move(0, 0);
 
 			getstr(playerInput);
 			std::string loadName = std::string("saveFiles/") + std::string(playerInput);
 			struct stat st;
-			while( !isalpha(playerInput[0]) || stat(loadName.c_str(), &st) != 0 ){
-				game1.saveScreen();
+			while(true){
+				if( isalpha(playerInput[0]) && stat(loadName.c_str(), &st) == 0 ){
+					fload.open(loadName, std::fstream::in);
+				}
+				if( isalpha(playerInput[0]) && stat(loadName.c_str(), &st) == 0  && fload){
+					break;
+				}
+
 				move(0, 0);
 				clrtoeol();
 				wclear(win);
 				wmove(win, 0, 0);
 				wprintw(win, "Save file does not exist, try again");
 				wmove(win, 1, 0);
-				wprintw(win, hitButton);
 				wrefresh(win);
-				getch();
-				game1.previousScreen();
 
 				getstr(playerInput);			
-				loadName = "saveFiles/" + std::string(playerInput); 
+				loadName = "saveFiles/" + std::string(playerInput);
+				wrefresh(win);
 			}
 			
 			move(0, 0);
@@ -126,22 +130,12 @@ int main() {
 			wclear(win);
 			wmove(win, 0, 0);
 			wprintw(win, "Loaded game");
-			wmove(win, 1, 0);
+			wmove(win, 24, 0);
+			refresh();
 			wprintw(win, hitButton);
 			wrefresh(win);
 			getch();
-
-			//need to actually load the game!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			//need to actually load the game!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			//need to actually load the game!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			//need to actually load the game!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			//need to actually load the game!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
-			delwin(win);
-			delwin(borderWindow);
-			endwin();
-			return 0;
+			wrefresh(win);
 			break;
 		}
 
@@ -154,12 +148,38 @@ int main() {
 			break;
 	}
 
+	//intro
+	game1.createRooms();
+	if(!isLoading){
+		game1.displayGameInfo();
+		wmove(win, 24, 0);
+		refresh();
+		wprintw(win, hitButton);
+		wrefresh(win);
+		getch();
+		wrefresh(win);
+	}
+
 	
+
+
 	//write to temp file all commands user enters. Will use to save game
 	std::string tempSaveFileName = "saveFiles/.temp" + std::to_string(getpid());
 	std::ofstream fout;
 	fout.open(tempSaveFileName, std::fstream::out | std::fstream::trunc);
-	if(!fout){
+	if(!fout){		
+		move(0, 0);
+		clrtoeol();
+		wclear(win);
+		wmove(win, 0, 0);
+		wprintw(win, "Unable to open file for save");
+		wmove(win, 24, 0);
+		refresh();
+		wprintw(win, hitButton);
+		wrefresh(win);
+		getch();
+		wrefresh(win);
+
 		//frees memory used by created subwindows
 		delwin(win);
 		delwin(borderWindow);
@@ -167,14 +187,9 @@ int main() {
 		//deallocates memory and ends ncurses
 		endwin();
 		game1.freeGame();
-		
-		std::cerr << "Unable to open file for save." << std::endl;
 
 		exit(1);
 	}
-	//get past menu in save file
-	for(int i=0; i<2; i++)
-		fout << std::endl;
 
 
 	//runs until game is over
@@ -183,11 +198,23 @@ int main() {
 		game1.getCurrentRoom()->printDescription();
 		move(0, 0);
 
-		//gets player command and will tell player if the command is invalid
-		getstr(playerInput);
-		for (unsigned int i = 0; i < strlen(playerInput); i++) {
-			playerInput[i] = tolower(playerInput[i]);
+		//get input
+		if(isLoading){
+			//gets command from save file, if eof then done loading
+			if( !fload.getline(playerInput, 99, '\n') ){
+				isLoading = false;
+				fload.close();
+				continue;
+			}
 		}
+		else{
+			//gets player command and will tell player if the command is invalid
+			getstr(playerInput);
+			for (unsigned int i = 0; i < strlen(playerInput); i++)
+				playerInput[i] = tolower(playerInput[i]);
+		}
+
+		bool keep = true;
 
 		//---------------------------------------------------
 		//-----------input that doesn't needs saving---------
@@ -217,11 +244,6 @@ int main() {
 				wprintw(win, "Saved successfully");
 				wmove(win, 1, 0);
 			}
-			
-			wprintw(win, hitButton);
-			wrefresh(win);
-			getch();
-			game1.previousScreen();
 
 			fin.close();
 			fout.close();
@@ -241,54 +263,50 @@ int main() {
 
 				exit(1);
 			}
-			continue;
+			keep = false;
 		}
 		else if (strcmp("help", playerInput) == 0) {
 			game1.displayHelpList();
-			continue;
+			keep = false;
 		}
 		else if (strcmp("look", playerInput) == 0) {
 			game1.saveScreen();
 			wclear(win);
 			game1.getCurrentRoom()->printLongDescription();
-			move(0, 0);
-			printw(hitButton);
-			refresh();
-			getch();
-			game1.previousScreen();
-			continue;
+			keep = false;
 		}
 		else if (strncmp("look at ", playerInput, 8) == 0) {
 			char* object = &(playerInput[8]);
 			game1.lookAt(object);
-			continue;
+			keep = false;
 		}
 		else if (strcmp("map", playerInput) == 0) {
 			game1.displayMap();
-			continue;
+			keep = false;
 		}
 		else if (strcmp("inventory", playerInput) == 0) {
 			game1.displayInventory();
-			continue;
+			keep = false;
 		}
 		else if (strncmp("question ", playerInput, 9) == 0) {
 			char* object = &(playerInput[9]);
 			game1.question(object);
-			continue;
+			keep = false;
+		}
+		else if (strncmp("frisk ", playerInput, 6) == 0){
+			char* suspect = &(playerInput[6]);
+			game1.gameFrisk(suspect);
+			keep = false;
 		}
 		//---------------------------------------------------
 		//---------------------------------------------------
 		//---------------------------------------------------
-
-
-		//save user's input
-		fout << playerInput << std::endl << std::endl;
 
 
 		//---------------------------------------------------
 		//---------------input that needs saving-------------
 		//---------------------------------------------------
-		if (strncmp("go ", playerInput, 2) == 0) {
+		else if (strncmp("go ", playerInput, 2) == 0) {
 			char* destination = &(playerInput[3]);
 			game1.travelTo(destination);
 		}
@@ -323,10 +341,6 @@ int main() {
 			char* location = &(playerInput[16]);
 			game1.fastTravel(location);
 		}
-		else if (strncmp("frisk ", playerInput, 6) == 0){
-			char* suspect = &(playerInput[6]);
-			game1.gameFrisk(suspect);
-		}
 		else if (strncmp("eat ", playerInput, 4) == 0){
 			char* object = &(playerInput[4]);
 			game1.gameEat(object);
@@ -337,22 +351,46 @@ int main() {
 
 
 		else {
+			game1.saveScreen();
 			move(0, 0);
-			printw("Invalid command. Please try again.");
-			move(1, 0);
-			printw(hitButton);
-			refresh();
-			getch();
-			move(1, 0);
 			clrtoeol();
-			continue;
+			wclear(win);
+			wmove(win, 0, 0);
+			wprintw(win, "Invalid command. Please try again.");
+			wmove(win, 1, 0);
+			keep = false;
+		}
+
+		//save user's input
+		if(keep)
+			fout << playerInput << std::endl;
+		
+		if(!isLoading){
+			//wait for player to press key to go forward
+			wmove(win, 24, 0);
+			refresh();
+			wprintw(win, hitButton);
+			wrefresh(win);
+			getch();
+			wrefresh(win);
+			game1.previousScreen();
 		}
 	}
 
-
+	//get rid of temp save file
 	fout.close();
-	if(std::remove(tempSaveFileName.c_str()) != 0)
-		std::cerr << "Unable to delete temporary save file" << std::endl;
+	if(std::remove(tempSaveFileName.c_str()) != 0){		
+		move(0, 0);
+		clrtoeol();
+		wclear(win);
+		wmove(win, 0, 0);
+		wprintw(win, "Unable to delete temporary save file");
+		wmove(win, 24, 0);
+		refresh();
+		wprintw(win, hitButton);
+		wrefresh(win);
+		getch();
+	}
 
 	
 	//frees memory used by created subwindows
@@ -365,7 +403,6 @@ int main() {
 	endwin();
 	game1.freeGame();
 	
-
 
 	return 0;
 }

@@ -52,14 +52,12 @@ public:
 
 
 	
-	void loadGame();
 	void lookAt(char*);
 	void travelTo(char*);
 	void gameTake(char*);
 	void displayHelpList();
 	void displayMap();
 	void displayInventory();
-	void saveGame();
 
 	void question(char*);
 	void gameAccuse(char*);

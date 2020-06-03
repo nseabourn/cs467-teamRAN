@@ -23,11 +23,6 @@ void Game::displayGameInfo() {
 
 	wprintw(win, "At any point in the game, you may type help to see a list of possible");
 	wprintw(win, "\n\t commands.\n");
-	wprintw(win, hitButton);
-	move(0, 0);
-	wrefresh(win);
-	getch();
-
 }
 
 void Game::createInteractables() {
@@ -383,22 +378,6 @@ int Game::displayMainScreen(){
 	}
 }
 
-//dummy function
-void Game::loadGame(){
-	
-	//clears and boxes window 
-	wclear(win);
-
-	//moves cursor and displays loading game message
-	wmove(win, 0, 0);
-	wprintw(win, "Loading game\n");
-	wprintw(win, hitButton);
-	wrefresh(win);
-	getch();
-
-	gameOver = true;
-}
-
 void Game::lookAt(char* object) {
 	saveScreen();
 
@@ -445,11 +424,6 @@ void Game::lookAt(char* object) {
 	}
 	wrefresh(win);
 	wmove(win, row, 0);
-	wprintw(win, hitButton);
-	wrefresh(win);
-	getch();
-
-	previousScreen();
 }
 
 void Game::travelTo(char* destination){
@@ -492,10 +466,6 @@ void Game::travelTo(char* destination){
 		wprintw(win, "Invalid location");
 
 	wmove(win, 1, 0);
-	wprintw(win, hitButton);
-	wrefresh(win);
-	getch();
-	previousScreen();	
 }
 
 void Game::gameTake(char* object) {
@@ -527,15 +497,14 @@ void Game::gameTake(char* object) {
 		wprintw(win, "Sorry, that is not a valid object");
 	}
 	wmove(win, 1, 0);
-	wprintw(win, hitButton);
-	wrefresh(win);
-	getch();
-
-	previousScreen();
 }
 
 void Game::displayHelpList() {
 	saveScreen();
+
+	move(0, 0);
+	clrtoeol();
+	wclear(win);
 
 
 	//list of available commands
@@ -559,16 +528,7 @@ void Game::displayHelpList() {
 	wprintw(win, "\n15. open (chest name): This attempts to open the chest.");
 	wprintw(win, "\n16. eat (item name) : This allows you to eat an item in your inventory.");
 	wrefresh(win);
-
-	move(0, 0);
-	printw("Press any key to return to previous screen.");
-	refresh();
-	getch();
-
-	previousScreen();
-	wrefresh(win);
-	wrefresh(borderWindow);
-	refresh();
+	wmove(win, 21, 0);
 }
 
 void Game::displayMap() {
@@ -602,15 +562,9 @@ void Game::displayMap() {
 	wprintw(win, "\n  |   1   |");
 	wprintw(win, "\n   -------");
 	wrefresh(win);
+	wmove(win, 1, 0);
 
 	move(0, 0);
-	printw("Press any key to return to previous screen.");
-	refresh();
-	getch();
-
-	previousScreen();
-	wrefresh(win);
-	wrefresh(borderWindow);
 	refresh();
 }
 
@@ -628,24 +582,6 @@ void Game::displayInventory() {
 		row++;
 	}
 	wmove(win, row, 0);
-	
-	
-	wprintw(win, hitButton);
-	wrefresh(win);
-	getch();
-	previousScreen();
-}
-
-
-//dummy function
-void Game::saveGame(){
-	move(0, 0);
-	clrtoeol();
-	wclear(win);
-	wprintw(win, "Game is being saved.");
-	wprintw(win, "\n%s", hitButton);
-	wrefresh(win);
-	getch();
 }
 
 void Game::question(char* object){
@@ -665,11 +601,6 @@ void Game::question(char* object){
 		wprintw(win, "Sorry, that is not a valid object");
 		wmove(win, 1, 0);
 	}
-	wprintw(win, hitButton);
-	wrefresh(win);
-	getch();
-
-	previousScreen();
 }
 
 void Game::gameAccuse(char* object) {
@@ -692,11 +623,6 @@ void Game::gameAccuse(char* object) {
 	if (gameOver) {
 		wprintw(win, "The game is now over.\n");
 	}
-	wprintw(win, hitButton);
-	wrefresh(win);
-	getch();
-
-	previousScreen();
 }
 
 void Game::solve(char* object){
@@ -730,28 +656,19 @@ void Game::solve(char* object){
 			wmove(win, 1, strlen(reward->getName()));
 			wprintw(win, "was added to the room.");
 			wmove(win, 2, 0);
-			wprintw(win, hitButton);
-			wrefresh(win);
 		}
 		else{			
 			wclear(win);
 			wmove(win, 0, 0);
 			wprintw(win, "Sorry, that is not the correct answer.");
 			wmove(win, 1, 0);
-			wprintw(win, hitButton);
-			wrefresh(win);
 		}
 	}
 	else {
 		wmove(win, 0, 0);
 		wprintw(win, "Sorry, that is not a valid object");
 		wmove(win, 1, 0);
-		wprintw(win, hitButton);
-		wrefresh(win);
 	}
-	getch();
-	
-	previousScreen();
 }
 
 std::vector<Interactable*> Game::getInteractables(){
@@ -806,10 +723,6 @@ void Game::type(char* object){
 	else 
 		wprintw(win, "Sorry, that is not a valid object");
 	wmove(win, 1, 0);
-	wprintw(win, hitButton);
-	wrefresh(win);
-	getch();
-	previousScreen();
 }
 
 void Game::unlock(char* object){
@@ -847,10 +760,6 @@ void Game::unlock(char* object){
 		wprintw(win, "Sorry, that is not a valid object");
 		wmove(win, 1, 0);
 	}
-	wprintw(win, hitButton);
-	wrefresh(win);
-	getch();
-	previousScreen();	
 }
 
 void Game::open(char* object){	
@@ -903,10 +812,6 @@ void Game::open(char* object){
 		wprintw(win, "Sorry, that is not a valid object");
 		wmove(win, 1, 0);
 	}
-	wprintw(win, hitButton);
-	wrefresh(win);
-	getch();
-	previousScreen();
 }
 
 void Game::drop(char* object){
@@ -942,10 +847,6 @@ void Game::drop(char* object){
 	}
 	
 	wmove(win, 1, 0);
-	wprintw(win, hitButton);
-	wrefresh(win);
-	getch();
-	previousScreen();
 }
 
 void Game::fastTravel(char* roomNumber){
@@ -974,10 +875,6 @@ void Game::fastTravel(char* roomNumber){
 	}
 	
 	wmove(win, 1, 0);
-	wprintw(win, hitButton);
-	wrefresh(win);
-	getch();
-	previousScreen();
 }
 
 void Game::addToRoomsVisited(Room* room){
@@ -1001,14 +898,15 @@ void Game::gameFrisk(char* suspect){
 	std::string sus(suspect);
 	int position = currentRoom->getItemsListPosition(sus);
 	if (position != -1) {
-		currentRoom->getItemsList()[position]->frisk();
+		if(currentRoom->getItemsList()[position]->getType() == 1)
+			currentRoom->getItemsList()[position]->frisk();
+		else
+			wprintw(win, "You cannot frisk the %s", suspect);
 	}
+	else
+		wprintw(win, "Sorry, that is not a valid object");
 	
 	wmove(win, 1, 0);
-	wprintw(win, hitButton);
-	wrefresh(win);
-	getch();
-	previousScreen();
 }
 
 void Game::gameEat(char* object){
@@ -1043,8 +941,4 @@ void Game::gameEat(char* object){
 	}
 	
 	wmove(win, 1, 0);
-	wprintw(win, hitButton);
-	wrefresh(win);
-	getch();
-	previousScreen();
 }
