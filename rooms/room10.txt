@@ -4,8 +4,8 @@
 7
 9
 0
-There are many small toys in this room! They all seem to be animal toys:\n
-Adjacent Rooms:\nTo the north is the entrance to Room 11.\nTo the south is the entrance to Room 7.\nTo the west is the entrance to Room 9.\n\n> There are lots of toys!!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint: Use "look" command to see the list of objects in the room.
+Adjacent Rooms:\n> To the north is the entrance to Room 11.\n> To the south is the entrance to Room 7.\n> To the west is the entrance to Room 9.\n\n- There are many small toys in this room, maybe belonging to a baby!\n- They all seem to be animal toys:\n\n
+Adjacent Rooms:\n> To the north is the entrance to Room 11.\n> To the south is the entrance to Room 7.\n> To the west is the entrance to Room 9.\n\n- There are lots of toys!!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint: Use "look" command to see the list of objects in the room.
 north
 room 11
 null

@@ -4,8 +4,8 @@
 4
 6
 0
-This Room is filled with words written everywhere!\nRandom words are on the walls, floor and even the cieling.\nBut none of them make any sense:\n
-Adjacent Rooms:\nTo the north is the entrance to Room 10.\nTo the south is the entrance to Room 4.\nTo the west is the entrance to Room 6.\n\n> There are words all around you, maybe in a made up languages?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint: Use "look" command to see the list of objects in the room.
+Adjacent Rooms:\n> To the north is the entrance to Room 10.\n> To the south is the entrance to Room 4.\n> To the west is the entrance to Room 6.\n\n- This Room is filled with words written everywhere!\n- Random words are on the walls, floor and even the cieling.\n- But none of them make any sense...:\n\n
+Adjacent Rooms:\n> To the north is the entrance to Room 10.\n> To the south is the entrance to Room 4.\n> To the west is the entrance to Room 6.\n\n- There are words all around you, maybe in a made up languages?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint: Use "look" command to see the list of objects in the room.
 north
 room 10
 null
@@ -25,7 +25,7 @@ This key was retrieved from the Scrambled quiz
 
 3
 Scrambled chest
-wwww
+!reredrum eht dnif ot eulc a sniatnoC
 Key from room 7
 1
 Note from room 7

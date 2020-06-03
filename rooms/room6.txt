@@ -4,8 +4,8 @@
 3
 5
 0
-This Room is very messy and filled with trash!\nCould anything in here be useful at all?.\n
-Adjacent Rooms:\nTo the north is the entrance to Room 9.\nTo the east is the entrance to Room 7.\nTo the south is the entrance to Room 3.\nTo the west is the entrance to Room 5.\n\n> Messy Room, smells aweful!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint: Use "look" command to see the list of objects in the room..
+Adjacent Rooms:\n> To the north is the entrance to Room 9.\n> To the east is the entrance to Room 7.\n> To the south is the entrance to Room 3.\n> To the west is the entrance to Room 5.\n\n- This Room is very messy and filled with trash!\n- Could anything in here be useful at all?.\n\n
+Adjacent Rooms:\n> To the north is the entrance to Room 9.\n> To the east is the entrance to Room 7.\n> To the south is the entrance to Room 3.\n> To the west is the entrance to Room 5.\n\n- Messy Room, smells aweful!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint: Use "look" command to see the list of objects in the room..
 north
 room 9
 east

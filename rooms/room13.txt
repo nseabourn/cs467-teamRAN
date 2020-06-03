@@ -3,9 +3,9 @@
 -1
 12
 -1
-0
-It appears someone else was just in this room and left in a hurry.\nLots of stuff are all over the place, as if this was going to\nbe a place to hide something important: \n
-Adjacent Rooms:\nTo the south is the entrance to Room 12.\n\n> Someone else was in this room recently...\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint: Use "look" command to see the list of objects in the room.
+1
+Adjacent Rooms:\n> To the south is the entrance to Room 12.\n\n- It appears someone else was just in this room and left in a hurry.\n- Lots of stuff are all over the place, as if this was going to\nbe a place to hide something important: \n\n
+Adjacent Rooms:\n> To the south is the entrance to Room 12.\n\n- Someone else was in this room recently...\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint: Use "look" command to see the list of objects in the room.
 null
 null
 null
@@ -22,8 +22,8 @@ Its empty
 
 0
 Knife
-It has blood stains
+It has blood stains...
 
 0
 Gloves
-"Suspect must have taken off his/her red pair of gloves!"\n
+"Murderer must have taken off and attemp to hide these red pair of gloves after commiting the crime!"\n

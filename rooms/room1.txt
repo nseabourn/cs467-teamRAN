@@ -4,8 +4,8 @@
 -1
 -1
 0
-This Room has six suspects, one of them is the murderer! \nYour job is to guess the correct suspect out of the group:\n
-Adjacent Rooms:\nTo the north, is the entrance to Room 2.\n\n> There are six suspects standing in this Room!\n \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint: Use "look" command to see the list of suspects.
+Adjacent Rooms:\n> To the north, is the entrance to Room 2.\n\n- This Room has six suspects, one of them is the murderer! \n- Your job is to guess the correct suspect out of the group:\n
+Adjacent Rooms:\n> To the north, is the entrance to Room 2.\n\n- There are six suspects standing in this Room!\n \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n* Hint: Use "look" command to see the list of suspects.
 north
 room 2
 null
@@ -19,7 +19,7 @@ null
 Adam
 > Suspect's name is Adam.\n> He is 54 years old \n> Suspect is wearing white shoes and white shirt. \n> Suspect has black gloves on. \n> Suspect is also wearing glasses.
 0
-""
+"Adam answer"
 
 1
 Sofia
@@ -41,13 +41,13 @@ Daniel
 
 1
 Chris
-> Suspect's name is Chris.\n> He is 32 years old\n> Suspect is wearing blue hat and black shoes and white shirt.\n> Suspect is wearing a jacket as well.
+> Suspect's name is Chris.\n> He is 32 years old\n> Suspect is wearing blue hat and black shoes and white shirt.\n>
 0
 "Chris answer"
 
 1
 Jack
-> Suspect's name is Jack.\n> He is 45 years old\n> Suspect is wearing black shoes and blue shirt.\n> Suspect has orange gloves on.\n> Suspect is also wearing glasses.\n> Suspect is wearing a jacket as well.
+> Suspect's name is Jack.\n> He is 45 years old\n> Suspect is wearing black shoes and blue shirt.\n> Suspect has orange gloves on.\n> Suspect is also wearing glasses.
 0
 "Jack answer"
 
