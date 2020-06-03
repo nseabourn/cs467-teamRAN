@@ -1,8 +1,10 @@
 .vscode
+.nfs*
 *.o
 borderWindow.txt
 stdscrWindow.txt
 subwindow.txt
 main
 saveFiles/*
-!saveFiles/dummyFile.txt
+!saveFiles/.keep
+
