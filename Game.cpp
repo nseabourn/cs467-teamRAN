@@ -100,6 +100,7 @@ void Game::createRooms() {
 				//base interactable
 				case 0:
 					objectPointer = new Interactable(name, description);
+					std::getline(inFile, inputLine);
 					break;
 
 				//suspect
@@ -162,6 +163,7 @@ void Game::createRooms() {
 				//Food	
 				case 7:
 					objectPointer = new Food(name, description);
+					std::getline(inFile, inputLine);
 					break;
 
 				default:
@@ -367,14 +369,15 @@ void Game::lookAt(char* object) {
 	std::string obj(object);
 	int position = currentRoom->getItemsListPosition(obj);
 	int inventoryPosition = -1;
+	char* name;
+	char* description;
 	for(unsigned int i = 0; i < inventory.size(); i++){
-		if (obj.compare((std::string)inventory[i]->getName())){
+		name = inventory[i]->getName();
+		if (strncmp(object, name, strlen(name) - 1) == 0){
 			inventoryPosition = i;
 		}
 	}
 	if (position != -1 || inventoryPosition != -1) {
-		char* name;
-		char* description;
 		if (position != -1){
 			name = currentRoom->getItemsList()[position]->getName();
 			description = currentRoom->getItemsList()[position]->getDescription();
@@ -801,12 +804,14 @@ void Game::drop(char* object){
 	clrtoeol();
 	wclear(win);
 	
+	
 	object[0] = toupper(object[0]);
-	std::string item(object);
+	char* name;
 	
 	int inventoryPosition = -1;
 	for(unsigned int i = 0; i < inventory.size(); i++){
-		if (item.compare((std::string)inventory[i]->getName())){
+		name = inventory[i]->getName();
+		if (strncmp(object, name, strlen(name) - 1) == 0){
 			inventoryPosition = i;
 		}
 	}
