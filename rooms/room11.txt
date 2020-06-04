@@ -15,7 +15,6 @@ room 10
 null
 null
 4
-
 0
 Note from room 11
 "Police note: We did not find finger prints anywhere in the room!\nMurderer might have been wearing gloves."\n\n

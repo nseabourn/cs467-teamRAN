@@ -15,7 +15,6 @@ room 12
 null
 null
 3
-
 0
 Mug
 Its empty

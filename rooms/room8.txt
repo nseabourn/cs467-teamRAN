@@ -18,9 +18,7 @@ null
 0
 Poetry book
 "Word are like water, Come in many forms"\n   "So easy to get used to the common norms"\n\n"It's nothing but a human curse"\n   "That we cannot read them in reverse!"\n
+
 0
 Communications book
-"Aliens Communications Rule #34:\n- Take the time and talk to your opponent in their native language.\n- Being able to talk back in reverse could be a matter of life or death!"
-
-
-
+"Aliens Communications Rule #34:\n\n- Take the time and talk to your opponent in their native language.\n- Being able to talk back in reverse could be a matter of life or death!"

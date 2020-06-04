@@ -15,7 +15,6 @@ null
 west
 room 11
 4
-
 0
 Note from room 12
 "Zoologist note: Murderer did not wear anything made ouf of leather!"
@@ -36,4 +35,3 @@ Contains a clue to find the murderer!
 Key from room 12
 1
 Note from room 12
-

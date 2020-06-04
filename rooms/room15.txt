@@ -15,7 +15,6 @@ null
 west
 room 14
 5
-
 7
 Cake
 The Cake is a Lie, but Murdering is a crime!
