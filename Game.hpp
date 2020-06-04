@@ -42,11 +42,9 @@ public:
 	void setGameOverStatus(bool status);
 	
 	void createRooms();
-	void createInteractables();
 	void displayGameInfo();
 	int displayMainScreen();
 	void freeGame();
-	void freeInteractables();
 	void previousScreen();
 	void saveScreen();
 

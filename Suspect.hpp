@@ -17,14 +17,7 @@ public:
 	bool accuse();
 	void frisk();
 
-	/*Suspect();
-	Suspect(bool m, std::string name_, std::string desc, Room* r, Game* g);
-	std::string getDesc();
-	bool getIsMurderer();
-	void setIsMurderer(bool m);
-	std::vector<std::string> listUserOptions();
-	std::string callFunction(int n);
-	std::string accuse();*/
+	
 };
 
 #endif

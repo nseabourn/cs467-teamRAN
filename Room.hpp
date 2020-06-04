@@ -10,8 +10,6 @@
 #include "common.hpp"
 #include "Interactable.hpp"
 
-//had to use forward declaration since Room and Interactable include eachother
-//class Interactable;
 
 class Room{
 private:
@@ -28,7 +26,6 @@ private:
 	std::vector<Interactable*> items;
 
 	int numberItems;
-	//std::set<Interactable*> items;
 
 public:
 	Room();
