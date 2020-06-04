@@ -19,8 +19,8 @@ main: ${OBJS} ${HEADERS}
 ${OBJS}: ${SRCS}
 	${CXX} ${CXXFLAGS} -c $(@:.o=.cpp)
 
-zip:
-	zip -r teamRAN *.cpp *.hpp *.md makefile rooms/
+zip: main
+	zip -r teamRAN * -x *.o
 
 clean:
 	rm -f *.o main
