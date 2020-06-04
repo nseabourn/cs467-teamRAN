@@ -14,7 +14,6 @@ const int newWidth = 75;
 
 
 int main() {	
-	//below is formatting code to be uncommented later
 	//include initializing screen, making sure screen is big enough, creating a new screen, and displaying the main menu
 	const char* makeTaller = "Please make your console screen taller and try again.";
 	const char* makeWider = "Please make your console screen wider and try again.";

@@ -15,19 +15,7 @@ private:
 public:
 	Quiz(std::string, std::string, std::string, Interactable*);
 	virtual Interactable* solve(char*); 
-
-	/*
-	Quiz();
-	Quiz(std::string name_, std::string desc, Room* r, Game* g, bool h, bool c);
-	void setSuccessString(std::string s);
-	void setFailString(std::string s);
-	void setIsCorrect(bool c);
-	std::string getSuccessString();
-	std::string getFailString();
-	bool getIsCorrect();
-	std::vector<std::string> listUserOptions();
-	std::string callFunction(int n);
-	std::string answer();*/
+	
 };
 
 #endif
